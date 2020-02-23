@@ -4,7 +4,7 @@
 > Our design would be mostly based on the first 2 HKBU assignment , to create a line chatbot that could troubleshot the main healthcare issue , Coronavirus Disease (COVID-19) in HK. The main topic in Hong Kong would be the supply on mask, 
 
 **Surgical Mask Supply in Hong Kong**
->
+> As our demand of surgical mask is so large, and the lack of supply on mask would be the main concern in Hong Kong. Therefore, the chatbot would help us to find the updated information on masks. For example, finding mask, the remmendation and standard of mask, Dubious Pharmacies (set the price of mask into high price)   
 
 
 
