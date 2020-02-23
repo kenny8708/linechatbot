@@ -14,4 +14,6 @@
 
 
 **General Out-patient Clinic**
->
+>For social infection control, Hospital Authority would assign 18 General Out-patient Clinic to receive patients with mild fever or symptoms of upper respiratory infections. The designated clinics are in 17 districts in Hong Kong. Most of them are general out-patient clinics in the district. There are also few family medical centers and community health centers.
+For user’s convenience, the chatbot would help us to provide the address, reservation number and working hours of the clinic to user.  
+
