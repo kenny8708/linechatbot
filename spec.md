@@ -1,7 +1,7 @@
-**Topic : LineChatBot**
+**Topic: Line Chatbot for COVID-19 Information**
 
 **Design**
-> Our design would be mostly based on the first 2 HKBU assignment , to create a line chatbot that could troubleshot the main public healthcare issue , Coronavirus Disease (COVID-19) in Hong Kong. The main content would provide information of daily infected cases, surgical masks supply and general out-patient clinic.
+> Our design would be mostly based on the first 2 HKBU assignment, to create a line chatbot that could troubleshoot the main public healthcare issue, Coronavirus Disease (COVID-19) in Hong Kong. The main content would provide information of daily infected cases, surgical masks supply and general out-patient clinic.
 
 
 **Report of Daily Infected Cases**
@@ -9,7 +9,7 @@
 
 
 **Surgical Mask Supply in Hong Kong**
-> As our demand of surgical mask is so large, and the lack of supply on mask would be the main concern in Hong Kong. Therefore, the chatbot would help us to find the updated information on masks. For example, finding mask, the remmendation and standard of mask, Dubious Pharmacies (set the price of mask into high price) .  Those could help people to get the newest information of mask and location of mask. We would get the data from store and form a map for user to know the statistic of those masks.   
+> As our demand of surgical mask is so large, and the lack of supply on mask would be the main concern in Hong Kong. Therefore, the chatbot would help us to find the updated information on masks. For example, finding mask, the recommendation and standard of mask, Dubious Pharmacies (set the price of mask into high price).  Those could help people to get the newest information of mask and location of mask. We would get the data from store and form a map for user to know the statistic of those masks.   
 
 
 **General Out-patient Clinic**
