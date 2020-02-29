@@ -60,7 +60,8 @@ def callback():
         if not isinstance(event, MessageEvent):
             continue
         if isinstance(event.message, TextMessage):
-            line_insert_record(event)
+            handle_TextMessage(event) 
+
         if isinstance(event.message, ImageMessage):
             handle_ImageMessage(event)
         if isinstance(event.message, VideoMessage):
@@ -79,6 +80,15 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
+    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    TextSendMessage(text="Nice testing!")
+    table_columns = '(keyword,response)'
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+    print(message)
+    cursor.close()
+    conn.close()
+    'return message'
     print(event.message.text)
     msg = 'You said: "' + event.message.text + '" '
     line_bot_api.reply_message(
@@ -116,23 +126,7 @@ def handle_FileMessage(event):
 	TextSendMessage(text="Nice file!")
     )
 
-def line_insert_record(event):
-    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    TextSendMessage(text="Nice testing!")
-    table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
-    cursor.executemany(postgres_insert_query, event)
-    conn.commit()
-
-    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
-    print(message)
-
-    cursor.close()
-    conn.close()
-    
-    return message
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
