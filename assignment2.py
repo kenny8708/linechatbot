@@ -130,6 +130,7 @@ def handle_FileMessage(event):
 def line_insert_record(record_list):
     DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
     table_columns = '(keyword,response)'
     postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
