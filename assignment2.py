@@ -39,23 +39,7 @@ if channel_access_token is None:
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 
-def line_insert_record(record_list):
-    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-    table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
-
-    cursor.executemany(postgres_insert_query, record_list)
-    conn.commit()
-
-    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
-    print(message)
-
-    cursor.close()
-    conn.close()
-    
-    return message
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -77,6 +61,7 @@ def callback():
             continue
         if isinstance(event.message, TextMessage):
             handle_TextMessage(event)
+            line_insert_record(event)
         if isinstance(event.message, ImageMessage):
             handle_ImageMessage(event)
         if isinstance(event.message, VideoMessage):
@@ -131,6 +116,24 @@ def handle_FileMessage(event):
 	event.reply_token,
 	TextSendMessage(text="Nice file!")
     )
+
+def line_insert_record(event):
+    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+    table_columns = '(keyword,response)'
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+
+    cursor.executemany(postgres_insert_query, event)
+    conn.commit()
+
+    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
+    print(message)
+
+    cursor.close()
+    conn.close()
+    
+    return message
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
