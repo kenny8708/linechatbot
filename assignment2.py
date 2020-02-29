@@ -92,9 +92,8 @@ def handle_TextMessage(event):
             cursor.execute(postgres_select_query)
             aw = cursor.fetchmany(int(fetchnumber))
             message = []
-           for i in raw:
-            message.append((i[0], i[1], i[2], str(i[3])[:-3], str(i[4])))
-    
+            for i in raw:
+              message.append((i[0], i[1], i[2], str(i[3])[:-3], str(i[4])))
             cursor.close()
             conn.close()
             return message
