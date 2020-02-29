@@ -1,3 +1,6 @@
 flask
 redis
 line-bot-sdk
+flask-Migrate
+flask-Script
+psycopg2

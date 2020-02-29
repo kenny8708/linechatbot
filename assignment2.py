@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
-
+from flask import Flask, request, abort
 import os
 import sys
 import redis
+import psycopg2
 
 from argparse import ArgumentParser
 
@@ -38,6 +39,23 @@ if channel_access_token is None:
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 
+def line_insert_record(record_list):
+    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+    table_columns = '(keyword,response)'
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+
+    cursor.executemany(postgres_insert_query, record_list)
+    conn.commit()
+
+    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
+    print(message)
+
+    cursor.close()
+    conn.close()
+    
+    return message
 
 @app.route("/callback", methods=['POST'])
 def callback():
