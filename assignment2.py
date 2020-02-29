@@ -83,7 +83,8 @@ def handle_TextMessage(event):
     msg = 'You said: "' + event.message.text + '" '
     if 'maskadmin' in event.message.text:
              try:
-               record_list = prepare_record(event.message.text)
+               text= event.message.text
+               record_list = prepare_record(text)
                reply = line_insert_record(record_list)
                line_bot_api.reply_message(
                event.reply_token,
@@ -92,7 +93,7 @@ def handle_TextMessage(event):
              except:
                line_bot_api.reply_message(
                event.reply_token,
-               TextSendMessage(record_list)
+               TextSendMessage(msg)
     )
 
 def prepare_record(text):
