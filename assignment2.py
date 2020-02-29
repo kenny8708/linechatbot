@@ -93,7 +93,7 @@ def handle_TextMessage(event):
             raw = cursor.fetchmany(int(fetchnumber))
             message = []
             for i in raw:
-              message.append((i[0], i[1], i[2], str(i[3])[:-3], str(i[4])))
+              message.append((i[0], i[1]))
             cursor.close()
             conn.close()
             return message
