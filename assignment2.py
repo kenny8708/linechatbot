@@ -80,14 +80,14 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    TextSendMessage(text="Nice testing!")
-    table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
-    print(message)
-    cursor.close()
-    conn.close()
+    'DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
+    'conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    'TextSendMessage(text="Nice testing!")
+    'table_columns = '(keyword,response)'
+    'postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+    'print(message)
+    'cursor.close()
+    'conn.close()
     'return message'
     print(event.message.text)
     msg = 'You said: "' + event.message.text + '" '
