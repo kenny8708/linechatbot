@@ -90,13 +90,9 @@ def handle_TextMessage(event):
             cursor = conn.cursor()
             postgres_select_query = f"""SELECT * FROM Response"""
             cursor.execute(postgres_select_query)
-            raw = cursor.fetchmany(int(fetchnumber))
-            message = []
-            for i in raw:
-              message.append((i[0], i[1]))
+            return (cursor.execute(postgres_select_query))
             cursor.close()
             conn.close()
-            return message
         except:
             line_bot_api.reply_message(
             event.reply_token,
