@@ -60,8 +60,8 @@ def callback():
         if not isinstance(event, MessageEvent):
             continue
         if isinstance(event.message, TextMessage):
-            handle_TextMessage(event) & line_insert_record(event)
-            
+            line_insert_record(event),
+            handle_TextMessage(event) 
         if isinstance(event.message, ImageMessage):
             handle_ImageMessage(event)
         if isinstance(event.message, VideoMessage):
