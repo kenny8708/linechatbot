@@ -61,7 +61,7 @@ def callback():
             continue
         if isinstance(event.message, TextMessage):
             handle_TextMessage(event)
-            line_insert_record(event)
+            line_insert_record(record_list)
         if isinstance(event.message, ImageMessage):
             handle_ImageMessage(event)
         if isinstance(event.message, VideoMessage):
@@ -117,7 +117,7 @@ def handle_FileMessage(event):
 	TextSendMessage(text="Nice file!")
     )
 
-def line_insert_record(event):
+def line_insert_record(record_list):
     DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     table_columns = '(keyword,response)'
