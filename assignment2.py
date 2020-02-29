@@ -88,19 +88,16 @@ def handle_TextMessage(event):
             DATABASE_URL = os.environ['postgres://vkmjybfdrkmkqz:762fa3bdc32a5886bd75bceecbe720aac5fdfe006a309f9da11d6a5aee8aefeb@ec2-34-235-108-68.compute-1.amazonaws.com:5432/de510e7f00pfof']
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             cursor = conn.cursor()
-            keyword = event.message.text 
-            postgres_select_query = f"""SELECT * FROM Response WHERE keyword = %s"""
-            cursor.execute(postgres_select_query, (event.message.text,))
-            conn.commit()
-            message = f"恭喜您！"
-            print(message)
+            postgres_select_query = f"""SELECT * FROM Response"""
+            cursor.execute(postgres_select_query)
+            aw = cursor.fetchmany(int(fetchnumber))
+            message = []
+           for i in raw:
+            message.append((i[0], i[1], i[2], str(i[3])[:-3], str(i[4])))
+    
             cursor.close()
             conn.close()
             return message
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply)
-            )
         except:
             line_bot_api.reply_message(
             event.reply_token,
