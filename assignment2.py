@@ -92,17 +92,14 @@ def handle_TextMessage(event):
              except:
                line_bot_api.reply_message(
                event.reply_token,
-               TextSendMessage(msg)
+               TextSendMessage(msg,record_list)
     )
 
 def prepare_record(text):
     text_list = text.split('\n')
-    
     record_list = []
-   
     for i in text_list[1:]:
         temp_list = i.split(' ')
-        
         temp_keyword = temp_list[0]
         temp_response = temp_list[1] 
         record = (temp_keyword, temp_response)
