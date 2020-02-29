@@ -5,6 +5,8 @@ import sys
 import redis
 import psycopg2
 
+
+
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -81,11 +83,20 @@ def callback():
 def handle_TextMessage(event):
     print(event.message.text)
     msg = 'You said: "' + event.message.text + '" '
-    if 'maskadmin' in event.message.text:
+    if 'mask' in event.message.text:
              try:
-               text= event.message.text
-               record_list = prepare_record(text)
-               reply = line_insert_record(record_list)
+               DATABASE_URL = os.environ['postgres://vkmjybfdrkmkqz:762fa3bdc32a5886bd75bceecbe720aac5fdfe006a309f9da11d6a5aee8aefeb@ec2-34-235-108-68.compute-1.amazonaws.com:5432/de510e7f00pfof']
+               conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+               cursor = conn.cursor()
+               keyword = 'event.message.text' 
+               postgres_insert_query = f"""SELECT * FROM Response WHERE keyword = %s"""
+               cursor.execute(postgres_select_query, (event.message.text,))
+               conn.commit()
+               message = f"恭喜您！"
+               print(message)
+               cursor.close()
+               conn.close()
+               return message
                line_bot_api.reply_message(
                event.reply_token,
                TextSendMessage(text=reply)
@@ -138,24 +149,6 @@ def handle_FileMessage(event):
 	event.reply_token,
 	TextSendMessage(text="Nice file!")
     )
-
-def line_insert_record(record_list):
-    DATABASE_URL = os.environ['postgres://vkmjybfdrkmkqz:762fa3bdc32a5886bd75bceecbe720aac5fdfe006a309f9da11d6a5aee8aefeb@ec2-34-235-108-68.compute-1.amazonaws.com:5432/de510e7f00pfof']
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = conn.cursor()
-    table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
-
-    cursor.executemany(postgres_insert_query, record_list)
-    conn.commit()
-
-    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
-    print(message)
-
-    cursor.close()
-    conn.close()
-    
-    return message
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
