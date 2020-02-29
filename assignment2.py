@@ -81,7 +81,7 @@ def callback():
 # Handler function for Text Message
 def handle_TextMessage(event):
     print(event.message.text)
-    msg = 'You said: !!"' + event.message.text + '" '
+    msg = 'You said: "' + event.message.text + '" '
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(msg)
@@ -120,7 +120,7 @@ def handle_FileMessage(event):
 def line_insert_record(event):
     DATABASE_URL = os.popen('heroku config:get DATABASE_URL -a chatbotcovid-19').read()[:-1]
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
+    TextSendMessage(text="Nice testing!")
     table_columns = '(keyword,response)'
     postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
