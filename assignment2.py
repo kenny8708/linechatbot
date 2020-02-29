@@ -81,10 +81,6 @@ def callback():
 def handle_TextMessage(event):
     print(event.message.text)
     msg = 'You said: "' + event.message.text + '" '
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(msg)
-    )
     if 'maskadmin' in event.message.text:
              try:
                record_list = prepare_record(event.message.text)
@@ -96,8 +92,9 @@ def handle_TextMessage(event):
              except:
                line_bot_api.reply_message(
                event.reply_token,
-               TextSendMessage(text='失敗了')
-        )
+               TextSendMessage(msg)
+    )
+        
     
 
 # Handler function for Sticker Message
@@ -136,7 +133,7 @@ def line_insert_record(record_list):
     table_columns = '(keyword,response)'
     postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
-    cursor.executemany(postgres_insert_query, event)
+    cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
     message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
