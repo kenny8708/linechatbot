@@ -92,7 +92,7 @@ def handle_TextMessage(event):
              except:
                line_bot_api.reply_message(
                event.reply_token,
-               TextSendMessage(msg,record_list)
+               TextSendMessage(record_list)
     )
 
 def prepare_record(text):
