@@ -94,7 +94,21 @@ def handle_TextMessage(event):
                event.reply_token,
                TextSendMessage(msg)
     )
+
+def prepare_record(text):
+    text_list = text.split('\n')
+    
+    record_list = []
+   
+    for i in text_list[1:]:
+        temp_list = i.split(' ')
         
+        temp_keyword = temp_list[0]
+        temp_response = temp_list[1] 
+        record = (temp_keyword, temp_response)
+        record_list.append(record)
+        
+    return record_list        
     
 
 # Handler function for Sticker Message
