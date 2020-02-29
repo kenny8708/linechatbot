@@ -61,19 +61,6 @@ def callback():
             continue
         if isinstance(event.message, TextMessage):
             handle_TextMessage(event)
-            if 'maskadmin' in event.message.text:
-             try:
-               record_list = prepare_record(event.message.text)
-               reply = line_insert_record(record_list)
-               line_bot_api.reply_message(
-               event.reply_token,
-               TextSendMessage(text=reply)
-            )
-             except:
-               line_bot_api.reply_message(
-               event.reply_token,
-               TextSendMessage(text='失敗了')
-        )
         if isinstance(event.message, ImageMessage):
             handle_ImageMessage(event)
         if isinstance(event.message, VideoMessage):
@@ -93,6 +80,19 @@ def callback():
 # Handler function for Text Message
 def handle_TextMessage(event):
     print(event.message.text)
+    if 'maskadmin' in event.message.text:
+             try:
+               record_list = prepare_record(event.message.text)
+               reply = line_insert_record(record_list)
+               line_bot_api.reply_message(
+               event.reply_token,
+               TextSendMessage(text=reply)
+            )
+             except:
+               line_bot_api.reply_message(
+               event.reply_token,
+               TextSendMessage(text='失敗了')
+        )
     msg = 'You said: "' + event.message.text + '" '
     line_bot_api.reply_message(
         event.reply_token,
