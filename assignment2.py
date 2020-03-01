@@ -89,7 +89,6 @@ def handle_TextMessage(event):
         try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
-
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply)
@@ -103,27 +102,16 @@ def handle_TextMessage(event):
     
 
 def prepare_record(text):
-    text_list = text.split('\n')
-    
-    month = text_list[0].split(' ')[0].split('/')[0]
-    day = text_list[0].split(' ')[0].split('/')[1]
-    d = datetime.date(datetime.date.today().year, int(month), int(day))
-   
+    text_list = text.split('\n')   
     record_list = []
-    
-    time_format = '%H:%M'
     
     for i in text_list[1:]:
         temp_list = i.split(' ')
         
         temp_name = temp_list[0]
         temp_training = temp_list[1]
-        
-        temp_start = datetime.datetime.strptime(temp_list[2].split('-')[0], time_format)
-        temp_end = datetime.datetime.strptime(temp_list[2].split('-')[1], time_format)
-        temp_duration = temp_end - temp_start
-        
-        record = (temp_name, temp_training, temp_duration, d)
+
+        record = (temp_name, temp_training)
         record_list.append(record)
         
     return record_list     
@@ -166,7 +154,7 @@ def line_insert_record(record_list):
     cursor = conn.cursor()
 
     table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s,%s,%s)"""
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
