@@ -4,8 +4,7 @@ import os
 import sys
 import redis
 import psycopg2
-
-
+import datetime
 
 from argparse import ArgumentParser
 
@@ -83,33 +82,51 @@ def callback():
 def handle_TextMessage(event):
     print(event.message.text)
     msg = 'You said: "' + event.message.text + '" '
+    'line_bot_api.reply_message('
+    'event.reply_token,'
+    'TextSendMessage(msg)'
     if 'mask' in event.message.text:
         try:
-            DATABASE_URL = os.environ['postgres://vkmjybfdrkmkqz:762fa3bdc32a5886bd75bceecbe720aac5fdfe006a309f9da11d6a5aee8aefeb@ec2-34-235-108-68.compute-1.amazonaws.com:5432/de510e7f00pfof']
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-            cursor = conn.cursor()
-            postgres_select_query = f"""SELECT * FROM Response"""
-            cursor.execute(postgres_select_query)
-            return (cursor.execute(postgres_select_query))
-            cursor.close()
-            conn.close()
-        except:
-            line_bot_api.reply_message(
+        record_list = prepare_record(event.message.text)
+        reply = line_insert_record(record_list)
+
+        line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(msg)
-    )
+            TextSendMessage(text=reply)
+        )
+            
+    except:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+        )
+    
 
 def prepare_record(text):
     text_list = text.split('\n')
+    
+    month = text_list[0].split(' ')[0].split('/')[0]
+    day = text_list[0].split(' ')[0].split('/')[1]
+    d = datetime.date(datetime.date.today().year, int(month), int(day))
+   
     record_list = []
+    
+    time_format = '%H:%M'
+    
     for i in text_list[1:]:
         temp_list = i.split(' ')
-        temp_keyword = temp_list[0]
-        temp_response = temp_list[1] 
-        record = (temp_keyword, temp_response)
+        
+        temp_name = temp_list[0]
+        temp_training = temp_list[1]
+        
+        temp_start = datetime.datetime.strptime(temp_list[2].split('-')[0], time_format)
+        temp_end = datetime.datetime.strptime(temp_list[2].split('-')[1], time_format)
+        temp_duration = temp_end - temp_start
+        
+        record = (temp_name, temp_training, temp_duration, d)
         record_list.append(record)
         
-    return record_list        
+    return record_list     
     
 
 # Handler function for Sticker Message
@@ -141,6 +158,26 @@ def handle_FileMessage(event):
 	event.reply_token,
 	TextSendMessage(text="Nice file!")
     )
+
+def line_insert_record(record_list):
+    DATABASE_URL = os.environ['postgres://vkmjybfdrkmkqz:762fa3bdc32a5886bd75bceecbe720aac5fdfe006a309f9da11d6a5aee8aefeb@ec2-34-235-108-68.compute-1.amazonaws.com:5432/de510e7f00pfof']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
+
+    table_columns = '(keyword,response)'
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s,%s,%s)"""
+
+    cursor.executemany(postgres_insert_query, record_list)
+    conn.commit()
+
+    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
+    print(message)
+
+    cursor.close()
+    conn.close()
+    
+    return message
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
