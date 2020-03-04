@@ -26,7 +26,6 @@ app = Flask(__name__)
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
 channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
-
 # obtain the port that heroku assigned to this app.
 heroku_port = os.getenv('PORT', None)
 
@@ -105,7 +104,7 @@ def prepare_record(text):
     text_list = text.split('\n')   
     record_list = []
     
-    for i in text_list[1:]:
+    for i in text_list[0:]:
         temp_list = i.split(' ')
         
         temp_name = temp_list[0]
@@ -152,7 +151,7 @@ def line_insert_record(record_list):
 
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-
+    
     table_columns = '(keyword,response)'
     postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
 
