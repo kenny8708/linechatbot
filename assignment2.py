@@ -90,7 +90,6 @@ def handle_TextMessage(event):
          reply = line_insert_record(record_list)
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=record_list)
             TextSendMessage(text=reply)
         )
   
@@ -155,7 +154,6 @@ def line_insert_record(record_list):
     
     table_columns = '(keyword,response)'
     postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
-    print(postgres_insert_query)
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
