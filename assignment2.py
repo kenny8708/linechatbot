@@ -87,11 +87,10 @@ def handle_TextMessage(event):
     if 'mask' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
-         TextSendMessage(text=record_list)
          reply = line_insert_record(record_list)
-         TextSendMessage(text=reply)
          line_bot_api.reply_message(
             event.reply_token,
+            TextSendMessage(text=record_list)
             TextSendMessage(text=reply)
         )
   
