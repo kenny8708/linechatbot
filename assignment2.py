@@ -91,7 +91,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='失敗了')
         )
-    if 'Record' in event.message.text:
+    if 'record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
@@ -111,7 +111,7 @@ def handle_TextMessage(event):
      event.reply_token,
      TextSendMessage(msg))
 
-def line_select_overall(fetchnumber):
+def mask_reply(fetchnumber):
     DATABASE_URL = os.environ['DATABASE_URL']
 
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
