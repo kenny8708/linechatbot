@@ -87,16 +87,17 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text=reply)
         )
-  
         except:
          line_bot_api.reply_message(
-            print(event.message.text)
-            msg = 'You said: "' + event.message.text + '" '
-            line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(msg))
+            TextSendMessage(text='失敗了')
         )
-    
+    else:
+     print(event.message.text)
+     msg = 'You said: "' + event.message.text + '" '
+     line_bot_api.reply_message(
+     event.reply_token,
+     TextSendMessage(msg))
 
 def prepare_record(text):
     text_list = text.split('\n')   
