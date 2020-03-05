@@ -81,6 +81,18 @@ def callback():
 def handle_TextMessage(event):
     if 'mask' in event.message.text:
         try:
+         mask_repsonse = mask_reply(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=mask_repsonse)
+        )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+        )
+    if '記錄' or 'Record' in event.message.text:
+        try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
          line_bot_api.reply_message(
@@ -94,10 +106,27 @@ def handle_TextMessage(event):
         )
     else:
      print(event.message.text)
-     msg = 'You said: "' + event.message.text + '" '
+     msg = 'I don\'t understand "' + event.message.text + '" '
      line_bot_api.reply_message(
      event.reply_token,
      TextSendMessage(msg))
+
+def mask_reply(text):
+    
+    DATABASE_URL = os.environ['DATABASE_URL']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
+
+    postgres_select_query = f"""SELECT * FROM Response WHERE keyword = %s"""
+    message=cursor.execute(postgres_insert_query, keyword)
+    
+    print(message)
+
+    cursor.close()
+    conn.close()
+    
+    return message   
 
 def prepare_record(text):
     text_list = text.split('\n')   
