@@ -79,11 +79,6 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    print(event.message.text)
-    msg = 'You said: "' + event.message.text + '" '
-    'line_bot_api.reply_message('
-    'event.reply_token,'
-    'TextSendMessage(msg)'
     if 'mask' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
@@ -95,8 +90,11 @@ def handle_TextMessage(event):
   
         except:
          line_bot_api.reply_message(
+            print(event.message.text)
+            msg = 'You said: "' + event.message.text + '" '
+            line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
+            TextSendMessage(msg))
         )
     
 
