@@ -91,7 +91,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='失敗了')
         )
-    if '記錄' or 'Record' in event.message.text:
+    if 'Record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
