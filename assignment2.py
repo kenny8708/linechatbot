@@ -81,7 +81,7 @@ def callback():
 def handle_TextMessage(event):
     if 'mask' in event.message.text:
         try:
-         mask_repsonse = mask_reply(event.message.text)
+         mask_repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=mask_repsonse)
@@ -111,9 +111,8 @@ def handle_TextMessage(event):
      event.reply_token,
      TextSendMessage(msg))
 
-def mask_reply(fetchnumber):
+def line_select_overall(fetchnumber):
     DATABASE_URL = os.environ['DATABASE_URL']
-
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
     postgres_select_query = f"""SELECT * FROM Response ORDER BY record_no DESC;"""
