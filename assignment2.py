@@ -79,18 +79,6 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'mask' in event.message.text:
-        try:
-         mask_repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=mask_repsonse)
-        )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='失敗了')
-        )
     if 'record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
@@ -111,20 +99,7 @@ def handle_TextMessage(event):
      event.reply_token,
      TextSendMessage(msg))
 
-def line_select_overall(fetchnumber):
-    DATABASE_URL = os.environ['DATABASE_URL']
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = conn.cursor()
-    postgres_select_query = f"""SELECT * FROM Response ORDER BY record_no DESC;"""
-    cursor.execute(postgres_select_query)
-    raw = cursor.fetchmany(int(fetchnumber))
-    message = []
-    for i in raw:
-        message.append((i[0], i[1], i[2], str(i[3])[:-3], str(i[4])))
-    cursor.close()
-    conn.close()
-    return message
- 
+
 
 def prepare_record(text):
     text_list = text.split('\n')   
