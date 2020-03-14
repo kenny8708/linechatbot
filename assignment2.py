@@ -92,11 +92,18 @@ def handle_TextMessage(event):
             TextSendMessage(text='失敗了')
         )
     if 'Record' in event.message.text:
+        try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
-         line_bot_api.reply_message
+         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=reply) 
+            TextSendMessage(text=reply)
+        )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+        )
     else:
      print(event.message.text)
      msg = 'I don\'t understand "' + event.message.text + '" '
@@ -172,7 +179,7 @@ def line_insert_record(record_list):
     cursor = conn.cursor()
     
     table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s);"""
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
