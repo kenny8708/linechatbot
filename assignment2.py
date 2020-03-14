@@ -91,30 +91,6 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='失敗了')
         )
-    if 'clinic' in event.message.text:
-        try:
-         clinic_repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=clinic_repsonse)
-        )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='失敗了')
-        )
-    if 'case' in event.message.text:
-        try:
-         case_repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=case_repsonse)
-        )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='失敗了')
-        )
     if 'record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
@@ -139,14 +115,14 @@ def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-    postgres_select_query = f"""SELECT response FROM Response WHERE keyword = '%s';"""
+    postgres_select_query = f"""SELECT response FROM Response WHERE keyword = 'mask';"""
     cursor.execute(postgres_select_query)
     record = cursor.fetchall()
 
     for row in record:
-        print (row[0],)
+        print (row[1],)
 
-    return row[0] 
+    return row[1] 
  
 
 def prepare_record(text):
