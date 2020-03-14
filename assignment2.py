@@ -105,11 +105,11 @@ def handle_TextMessage(event):
             TextSendMessage(text='Success')
         )
     else:
-     print(event.message.text)
-     msg = 'I don\'t understand "' + event.message.text + '" '
-     line_bot_api.reply_message(
-     event.reply_token,
-     TextSendMessage(msg))
+      print(event.message.text)
+      msg = 'I don\'t understand "' + event.message.text + '" '
+      line_bot_api.reply_message(
+      event.reply_token,
+      TextSendMessage(text=msg))
 
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
