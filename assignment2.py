@@ -85,12 +85,12 @@ def handle_TextMessage(event):
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=repsonse)
-        )
+         )
         except:
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='失敗了')
-        )
+         )
     if 'Record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
@@ -98,18 +98,18 @@ def handle_TextMessage(event):
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=reply)
-        )
+         )
         except:
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='Success')
-        )
+         )
     else:
-      print(event.message.text)
-      msg = 'I don\'t understand "' + event.message.text + '" '
-      line_bot_api.reply_message(
-      event.reply_token,
-      TextSendMessage(text=msg))
+         msg = 'I don\'t understand "' + event.message.text + '" '
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=msg)
+         )
 
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
