@@ -121,10 +121,10 @@ def line_select_overall(text):
     record = cursor.fetchall()
 
     for row in record:
-        print (row[1],)
+        print (row[2],)
     cursor.close()
     conn.close()
-    return row[1] 
+    return row[2] 
  
 
 def prepare_record(text):
