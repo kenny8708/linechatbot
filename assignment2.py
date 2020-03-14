@@ -109,7 +109,7 @@ def handle_TextMessage(event):
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
-         )
+        )
 
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
