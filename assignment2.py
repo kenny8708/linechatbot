@@ -79,12 +79,36 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'mask' in event.message.text:
+    if 'Mask' in event.message.text:
         try:
          mask_repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=mask_repsonse)
+        )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+        )
+    if 'Clinic' in event.message.text:
+        try:
+         clinic_repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=clinic_repsonse)
+        )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+        )
+    if 'Case' in event.message.text:
+        try:
+         case_repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=case_repsonse)
         )
         except:
          line_bot_api.reply_message(
