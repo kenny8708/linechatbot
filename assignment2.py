@@ -79,7 +79,7 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'mask' in event.message.text:
+    if 'mask' or 'clinic' or 'case' in event.message.text:
         try:
          mask_repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
@@ -91,6 +91,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='失敗了')
         )
+    
     if 'record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
@@ -121,7 +122,8 @@ def line_select_overall(text):
 
     for row in record:
         print (row[1],)
-
+    cursor.close()
+    conn.close()
     return row[1] 
  
 
@@ -178,7 +180,7 @@ def line_insert_record(record_list):
     cursor = conn.cursor()
     
     table_columns = '(keyword,response)'
-    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s);"""
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
