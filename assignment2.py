@@ -117,7 +117,7 @@ def line_select_overall(text):
     cursor = conn.cursor()
     keyword = '%s'
     postgres_select_query = f"""SELECT * FROM Response WHERE keyword= %s;"""
-    cursor.execute(postgres_select_query,(keyword,))
+    cursor.execute(postgres_select_query,keyword)
     message = cursor.fetchall()
     return message
  
