@@ -86,7 +86,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text=repsonse)
          )
-         except:
+        except:
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='失敗了')
@@ -99,12 +99,12 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text=reply)
          )
-         except:
+        except:
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='Success')
          )
-     else:
+    else:
          msg = 'I don\'t understand "' + event.message.text + '" '
          line_bot_api.reply_message(
             event.reply_token,
