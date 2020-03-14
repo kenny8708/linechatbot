@@ -115,14 +115,14 @@ def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-    postgres_select_query = f"""SELECT * FROM Response WHERE keyword = %s;"""
+    postgres_select_query = f"""SELECT * FROM Response WHERE keyword = (%s);"""
     cursor.execute(postgres_select_query)
     record = cursor.fetchall()
 
     for row in record:
-        print (row[2],)
+        print (row[1],)
 
-    return row[2] 
+    return row[1] 
  
 
 def prepare_record(text):
