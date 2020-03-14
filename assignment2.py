@@ -116,7 +116,7 @@ def line_select_overall(text):
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
     keyword = 'mask'
-    postgres_select_query = f"""SELECT * FROM Response WHERE keyword= mask;"""
+    postgres_select_query = f"""SELECT response FROM Response WHERE keyword= mask;"""
     cursor.execute(postgres_select_query,keyword)
     message = cursor.fetchall()
     return message
