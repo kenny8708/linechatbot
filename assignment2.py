@@ -102,7 +102,7 @@ def handle_TextMessage(event):
         except:
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
+            TextSendMessage(text='Success')
         )
     else:
      print(event.message.text)
