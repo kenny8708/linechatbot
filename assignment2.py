@@ -136,15 +136,14 @@ def handle_TextMessage(event):
          )
     else:
         while True:
-            msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-        if msg == 'quit' or msg == 'exit':
+                msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
+            if msg == 'quit' or msg == 'exit':
                 break
-        if msg == '':
+            if msg == '':
                 continue
-        print("You have entered " + msg, end=' ') 
-    #value = redis1.get(msg)
-    X = redis1.incr(msg)
-    print('for',X,'times')    
+            msg = "You have entered " + msg, end=' '"
+            X = redis1.incr(msg)
+            print('for',X,'times')    
          msg = 'I don\'t understand "' + event.message.text + '" '
          line_bot_api.reply_message(
             event.reply_token,
