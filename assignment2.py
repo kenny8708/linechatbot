@@ -91,6 +91,30 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='失敗了')
          )
+    elif 'Clinic' in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+         )
+    elif 'Case'  in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='失敗了')
+         )
     elif 'Record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
