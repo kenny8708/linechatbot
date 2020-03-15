@@ -143,17 +143,8 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-        # while True:
-        #    msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-        #    if msg == 'quit' or msg == 'exit':
-        #        break
-        #    if msg == '':
-        #        continue
-        #   print("You have entered " + msg, end=' ') 
-        #   X = redis1.incr(msg)
-        #   print('for',X,'times')   
-         #X = redis1.incr(event.message.text)
-         msg = "'I don\'t understand ' + event.message.text + ' for X time'"
+         
+         msg = 'I don\'t understand "' + event.message.text + '" '
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
