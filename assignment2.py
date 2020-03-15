@@ -145,11 +145,11 @@ def handle_TextMessage(event):
     else:
          X = redis1.incr(event.message.text)
          #print('for',X,'times') 
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=X)
-        )
-         msg = 'I don\'t understand "' + event.message.text + '"'
+         #line_bot_api.reply_message(
+         #   event.reply_token,
+         #   TextSendMessage(text=X)
+        #)
+         msg = 'I don\'t "'+ X +'"  understand "' + event.message.text + '"'
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
