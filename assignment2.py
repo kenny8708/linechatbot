@@ -89,7 +89,7 @@ def handle_TextMessage(event):
         except:
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
+            TextSendMessage(text='Please retry it later')
          )
     elif 'Clinic' in event.message.text:
         try:
@@ -101,7 +101,7 @@ def handle_TextMessage(event):
         except:
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
+            TextSendMessage(text='Please retry it later')
          )
     elif 'Case'  in event.message.text:
         try:
@@ -113,7 +113,7 @@ def handle_TextMessage(event):
         except:
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='失敗了')
+            TextSendMessage(text='Please retry it later')
          )
     elif 'Record' in event.message.text:
         try:
@@ -126,7 +126,7 @@ def handle_TextMessage(event):
         except:
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text='Success')
+            TextSendMessage(text='Please retry it later')
          )
     else:
          msg = 'I don\'t understand "' + event.message.text + '" '
