@@ -30,11 +30,9 @@ channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 heroku_port = os.getenv('PORT', None)
 
 HOST = "redis-16496.c114.us-east-1-4.ec2.cloud.redislabs.com"
-PWD =  "XBD7myH78zcTm17UmsB0tjoMzVsPnmei"
+PWD = "XBD7myH78zcTm17UmsB0tjoMzVsPnmei"
 PORT = "16496" 
 
-redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
-redis1.flushdb()
 
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
@@ -85,16 +83,6 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    while True:
-        msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-    if msg == 'quit' or msg == 'exit':
-        break
-    if msg == '':
-        continue
-    print("You have entered " + msg, end=' ') 
-    #value = redis1.get(msg)
-    X = redis1.incr(msg)
-    print('for',X,'times')
     if 'Mask'  in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
@@ -145,20 +133,11 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-          #msg = 'I don\'t understand "' + event.message.text + '" '
-          msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-          if msg == 'quit' or msg == 'exit':
-                break
-          if msg == '':
-                continue
-          print("You have entered " + msg, end=' ') 
-          X = redis1.incr(msg)
-          print('for',X,'times')
-          #msg = 'I don\'t understand "' + event.message.text + '" '
-          line_bot_api.reply_message(
-             event.reply_token,
-             TextSendMessage(text=msg)
-          )
+         msg = 'I don\'t understand "' + event.message.text + '" '
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=msg)
+        )
 
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
