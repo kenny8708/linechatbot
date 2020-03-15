@@ -33,6 +33,8 @@ HOST = "redis-16496.c114.us-east-1-4.ec2.cloud.redislabs.com"
 PWD = "XBD7myH78zcTm17UmsB0tjoMzVsPnmei"
 PORT = "16496" 
 
+redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
+redis1.flushdb()
 
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
@@ -61,6 +63,15 @@ def callback():
 
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
+        while True:
+            msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
+            if msg == 'quit' or msg == 'exit':
+                break
+            if msg == '':
+                continue
+            print("You have entered " + msg, end=' ') 
+            X = redis1.incr(msg)
+            print('for',X,'times')         
         if not isinstance(event, MessageEvent):
             continue
         if isinstance(event.message, TextMessage):
