@@ -85,16 +85,6 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    while True:
-        msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-    if msg == 'quit' or msg == 'exit':
-        break
-    if msg == '':
-        continue
-    print("You have entered " + msg, end=' ') 
-    #value = redis1.get(msg)
-    X = redis1.incr(msg)
-    print('for',X,'times')
     if 'Mask'  in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
@@ -145,6 +135,16 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
+        while True:
+            msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
+        if msg == 'quit' or msg == 'exit':
+                break
+        if msg == '':
+                continue
+        print("You have entered " + msg, end=' ') 
+    #value = redis1.get(msg)
+    X = redis1.incr(msg)
+    print('for',X,'times')    
          msg = 'I don\'t understand "' + event.message.text + '" '
          line_bot_api.reply_message(
             event.reply_token,
