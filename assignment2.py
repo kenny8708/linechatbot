@@ -79,7 +79,7 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'Mask' or 'Clinic' or 'Case' in event.message.text:
+    if 'Mask'  in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
