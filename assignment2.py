@@ -145,7 +145,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-          msg = 'I don\'t understand "' + event.message.text + '" '
+          #msg = 'I don\'t understand "' + event.message.text + '" '
           msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
           if msg == 'quit' or msg == 'exit':
                 break
