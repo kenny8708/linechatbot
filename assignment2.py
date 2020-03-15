@@ -143,12 +143,13 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-         msg = 'I don\'t understand "' + event.message.text + '" '
+         X = redis1.incr(event.message.text)
+         msg = 'I don\'t understand "' + event.message.text + '"for '+ X +'"time''
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
         )
-
+      
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
