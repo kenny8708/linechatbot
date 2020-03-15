@@ -143,7 +143,6 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-         
          msg = 'I don\'t understand "' + event.message.text + '" '
          line_bot_api.reply_message(
             event.reply_token,
