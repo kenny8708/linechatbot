@@ -5,6 +5,7 @@ import sys
 import redis
 import psycopg2
 import datetime
+import pandas as pd
 
 from argparse import ArgumentParser
 
@@ -129,6 +130,21 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+         
+    elif 'Hong Kong' in event.message.text:
+        try:
+        df = pd.read_csv ("http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv")
+        
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=df)
+         )             
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )         
+
     elif 'Record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
