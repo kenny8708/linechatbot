@@ -63,6 +63,15 @@ def callback():
 
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
+        #while True:
+        #    msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
+        #    if msg == 'quit' or msg == 'exit':
+        #        break
+        #    if msg == '':
+        #        continue
+        #   print("You have entered " + msg, end=' ') 
+        #   X = redis1.incr(msg)
+        #   print('for',X,'times')         
         if not isinstance(event, MessageEvent):
             continue
         if isinstance(event.message, TextMessage):
@@ -75,7 +84,6 @@ def callback():
             handle_FileMessage(event)
         if isinstance(event.message, StickerMessage):
             handle_StickerMessage(event)
-
         if not isinstance(event, MessageEvent):
             continue
         if not isinstance(event.message, TextMessage):
@@ -135,21 +143,18 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
     else:
-        while True:
-                msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-            if msg == 'quit' or msg == 'exit':
-                break
-            if msg == '':
-                continue
-            msg = "You have entered " + msg, end=' '"
-            X = redis1.incr(msg)
-            print('for',X,'times')    
-         msg = 'I don\'t understand "' + event.message.text + '" '
+         X = redis1.incr(event.message.text)
+         #print('for',X,'times') 
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=X)
+        )
+         msg = 'I don\'t understand "' + event.message.text + '"'
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=msg)
         )
-
+      
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
