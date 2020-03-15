@@ -5,7 +5,6 @@ import sys
 import redis
 import psycopg2
 import datetime
-import pandas as pd
 
 from argparse import ArgumentParser
 
@@ -46,9 +45,6 @@ if channel_access_token is None:
 
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
-
-# pandas
-df = pd.read_csv (r 'http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv')
 
 
 @app.route("/callback", methods=['POST'])
@@ -113,12 +109,12 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    elif 'Case' in event.message.text:
+    elif 'Case'  in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=df)
+            TextSendMessage(text=repsonse)
          )
         except:
          line_bot_api.reply_message(
