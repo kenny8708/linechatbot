@@ -5,7 +5,6 @@ import sys
 import redis
 import psycopg2
 import datetime
-import pandas as pd
 
 from argparse import ArgumentParser
 
@@ -94,17 +93,98 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    input_text = event.message.text
-    
-    if input_text == 'Hong Kong'
-        df = pd.read_csv ("http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv")
-        
-        line_bot_api.reply_message(
+    if 'Mask'  in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=df)
-         )       
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    elif 'Clinic' in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    elif 'Case'  in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    elif 'Record' in event.message.text:
+        try:
+         record_list = prepare_record(event.message.text)
+         reply = line_insert_record(record_list)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    else:
+         X = redis1.incr(event.message.text)
+         #print('for',X,'times') 
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=X)
+        )
+         msg = 'I don\'t understand "' + event.message.text + '"'
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=msg)
+        )
+      
+def line_select_overall(text):
+    DATABASE_URL = os.environ['DATABASE_URL']
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
+    postgres_select_query = f"""SELECT * FROM Response WHERE keyword = %s;"""
+    cursor.execute(postgres_select_query,(text,))
+    record = cursor.fetchall()
 
+    for row in record:
+        print (row[2],)
+    cursor.close()
+    conn.close()
+    return row[2] 
+ 
 
+def prepare_record(text):
+    text_list = text.split('\n')   
+    record_list = []
+    
+    for i in text_list[1:]:
+        temp_list = i.split(' ')
+        
+        temp_name = temp_list[0]
+        temp_training = temp_list[1]
+
+        record = (temp_name, temp_training)
+        record_list.append(record)
+        
+    return record_list     
+    
 
 # Handler function for Sticker Message
 def handle_StickerMessage(event):
@@ -136,6 +216,24 @@ def handle_FileMessage(event):
 	TextSendMessage(text="Nice file!")
     )
 
+def line_insert_record(record_list):
+    DATABASE_URL = os.environ['DATABASE_URL']
+
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cursor = conn.cursor()
+    
+    table_columns = '(keyword,response)'
+    postgres_insert_query = f"""INSERT INTO Response {table_columns} VALUES (%s,%s)"""
+    cursor.executemany(postgres_insert_query, record_list)
+    conn.commit()
+
+    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
+    print(message)
+
+    cursor.close()
+    conn.close()
+    
+    return message
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
