@@ -63,15 +63,15 @@ def callback():
 
     # if event is MessageEvent and message is TextMessage, then echo text
     for event in events:
-        while True:
-            msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
-            if msg == 'quit' or msg == 'exit':
-                break
-            if msg == '':
-                continue
-            print("You have entered " + msg, end=' ') 
-            X = redis1.incr(msg)
-            print('for',X,'times')         
+        #while True:
+        #    msg = input("Please enter your query (type 'quit' or 'exit' to end):").strip()
+        #    if msg == 'quit' or msg == 'exit':
+        #        break
+        #    if msg == '':
+        #        continue
+        #   print("You have entered " + msg, end=' ') 
+        #   X = redis1.incr(msg)
+        #   print('for',X,'times')         
         if not isinstance(event, MessageEvent):
             continue
         if isinstance(event.message, TextMessage):
