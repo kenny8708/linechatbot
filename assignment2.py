@@ -120,10 +120,9 @@ def handle_TextMessage(event):
          )
     elif 'Case'  in event.message.text:
         try:
-         repsonse = exec(open("hk_covid19.py").read())
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=repsonse)
+            TextSendMessage(text=exec(open("hk_covid19.py").read()))
          )
         except:
          line_bot_api.reply_message(
@@ -227,7 +226,7 @@ def line_insert_record(record_list):
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
-    message = f"恭喜您！ {cursor.rowcount} 筆資料成功匯入 Response 表單！"
+    message = f" {cursor.rowcount} Record addes into Response "
     print(message)
 
     cursor.close()
