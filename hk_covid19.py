@@ -15,7 +15,7 @@ hk6=hk.iloc[-1]['Number of death cases']
 hk7=hk.iloc[-1]['Number of discharge cases']
 hk8=hk.iloc[-1]['Number of probable cases']
 
-print('Latest COVID-19 Statistics in HK',
+print ('Latest COVID-19 Statistics in HK',
       'Confirmed:', hk2, "\n"
       'Probable:', hk3, "\n"
       'Death:', hk4, "\n"
