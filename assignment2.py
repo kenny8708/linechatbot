@@ -115,7 +115,8 @@ hk8=hk.iloc[-1]['Number of probable cases']
 def handle_TextMessage(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=f'Confirmed:{hk1}')
+        TextSendMessage(text=f'Confirmed: {hk2} Probable: {hk3}'
+        )
     )
 
 
