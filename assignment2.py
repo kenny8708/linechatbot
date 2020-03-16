@@ -92,7 +92,7 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if event.message.text == "Mask":
+    if 'Mask'  in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
@@ -104,8 +104,8 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    if event.message.text == "Clinic":
-	    try:
+    elif 'Clinic' in event.message.text:
+        try:
          repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
             event.reply_token,
@@ -116,7 +116,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    if event.message.text == "Case":
+    elif 'Case'  in event.message.text:
         try:
          line_bot_api.reply_message(
             event.reply_token,
@@ -127,7 +127,7 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    elif event.message.text == "Record":
+    elif 'Record' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
