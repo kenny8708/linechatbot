@@ -6,6 +6,9 @@ import redis
 import psycopg2
 import datetime
 import subprocess
+import pandas as pd  
+import io  
+import requests  
 
 from argparse import ArgumentParser
 
@@ -120,9 +123,32 @@ def handle_TextMessage(event):
          )
     elif 'Case'  in event.message.text:
         try:
+         url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
+         s=requests.get(url1).content  
+         hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
+         hk1=hk.iloc[-1]['As of date']
+         hk2=hk.iloc[-1]['Number of confirmed cases']
+         hk3=hk.iloc[-1]['Number of ruled out cases']
+         hk4=hk.iloc[-1]['Number of cases still hospitalised for investigation']
+         hk5=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
+         hk6=hk.iloc[-1]['Number of death cases']
+         hk7=hk.iloc[-1]['Number of discharge cases']
+         hk8=hk.iloc[-1]['Number of probable cases']
+         Response= ['Latest COVID-19 Statistics in HK']
+         Response.append('Confirmed:', hk2, "\n")
+         Response.append('Probable:', hk3, "\n")
+         Response.append('Death:', hk4, "\n")
+         Response.append('Discharged:', hk5, "\n")
+         Response.append('Hospitalised:', hk6, "\n")
+         Response.append('Ruled out:', hk7, "\n")
+         Response.append('Reported:', hk8, "\n")
+         Response.append('---------', "\n")
+         Response.append('Data Source: data.gov.hk', "\n")
+         Response.append('Last Updated on:', hk1, "\n")
+         Response.append('Update Frequency: Every Night')  
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=exec(open("hk_covid19.py").read()))
+            TextSendMessage(text=repsonse)
          )
         except:
          line_bot_api.reply_message(
