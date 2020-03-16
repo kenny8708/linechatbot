@@ -4,3 +4,4 @@ line-bot-sdk
 flask-Migrate
 flask-Script
 psycopg2
+pandas

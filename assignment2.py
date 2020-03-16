@@ -119,7 +119,7 @@ def handle_TextMessage(event):
          )
     elif 'Case'  in event.message.text:
         try:
-         repsonse = line_select_overall(event.message.text)
+         repsonse = os.system("hk_covid19.py")
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=repsonse)
@@ -144,16 +144,15 @@ def handle_TextMessage(event):
          )
     else:
          X = redis1.incr(event.message.text)
-         #print('for',X,'times') 
-         #line_bot_api.reply_message(
-         #   event.reply_token,
-         #   TextSendMessage(text=X)
-        #)
-         msg = 'I don\'t "'+ X +'"  understand "' + event.message.text + '"'
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=msg)
+            TextSendMessage(text="you have enter"+ event.message.text+"for"+X+"time")
         )
+        # msg = 'I don\'t understand "' + event.message.text + '"'
+        # line_bot_api.reply_message(
+        #    event.reply_token,
+        #    TextSendMessage(text=msg)
+        #)
       
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
