@@ -109,23 +109,13 @@ hk6=hk.iloc[-1]['Number of death cases']
 hk7=hk.iloc[-1]['Number of discharge cases']
 hk8=hk.iloc[-1]['Number of probable cases']
 
+                              
+
 # Handler function for Text Message
 def handle_TextMessage(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="'Latest COVID-19 Statistics in HK', "\n"
-                                'Confirmed:', hk2, "\n"
-                                'Probable:', hk3, "\n"
-                                'Death:', hk4, "\n"
-                                'Discharged:', hk5, "\n"
-                                'Hospitalised:', hk6, "\n"
-                                'Ruled out:', hk7, "\n"
-                                'Reported:', hk8, "\n"
-                                '---------', "\n"
-                                'Data Source: data.gov.hk', "\n"
-                                'Last Updated on:', hk1, "\n"
-                                'Update Frequency: Every Night'  
-                                ")
+        TextSendMessage(text=hk1)
     )
 
 
