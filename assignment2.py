@@ -120,7 +120,7 @@ def handle_TextMessage(event):
          )
     elif 'Case'  in event.message.text:
         try:
-         repsonse = execfile("hk_covid19.py")
+         repsonse = exec(open("hk_covid19.py").read())
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=repsonse)
