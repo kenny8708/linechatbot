@@ -5,6 +5,7 @@ import sys
 import redis
 import psycopg2
 import datetime
+import subprocess
 
 from argparse import ArgumentParser
 
@@ -119,7 +120,7 @@ def handle_TextMessage(event):
          )
     elif 'Case'  in event.message.text:
         try:
-         repsonse = os.system("hk_covid19.py")
+         repsonse = subprocess.call(" python hk_covid19.py", shell=True)
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=repsonse)
