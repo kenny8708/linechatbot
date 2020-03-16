@@ -17,9 +17,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageMessage, VideoMessage, FileMessage, StickerMessage, StickerSendMessage
-)
+from linebot.models import *
 from linebot.utils import PY3
 
 app = Flask(__name__)
