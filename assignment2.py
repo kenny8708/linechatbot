@@ -17,9 +17,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageMessage, VideoMessage, FileMessage, StickerMessage, StickerSendMessage
-)
+from linebot.models import *
 from linebot.utils import PY3
 
 app = Flask(__name__)
@@ -94,7 +92,7 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'Mask'  in event.message.text:
+    if 'Mask' in event.message.text:
         try:
          repsonse = line_select_overall(event.message.text)
          line_bot_api.reply_message(
@@ -118,7 +116,19 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    elif 'Case'  in event.message.text:
+    elif 'Case' in event.message.text:
+        try:
+         repsonse = line_select_overall(event.message.text)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=repsonse)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    elif event.message.text == "HKtest":
         try:
          repsonse= exec(open("hk_covid19.py").read())
          line_bot_api.reply_message(
