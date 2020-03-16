@@ -92,73 +92,79 @@ def callback():
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    if 'Mask' in event.message.text:
-        try:
-         repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=repsonse)
-         )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-    elif 'Clinic' in event.message.text:
-        try:
-         repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=repsonse)
-         )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-    elif 'Case' in event.message.text:
-        try:
-         repsonse = line_select_overall(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=repsonse)
-         )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-    elif event.message.text == "HKtest":
-        try:
-         repsonse= exec(open("hk_covid19.py").read())
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(repsonse)
-         )
-        except: 
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-    elif 'Record' in event.message.text:
-        try:
-         record_list = prepare_record(event.message.text)
-         reply = line_insert_record(record_list)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply)
-         )
-        except:
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-    else:
-         X = redis1.incr(event.message.text)
-         line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} for {X} time')
-        )
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="Testing!")
+    )
+
+
+#    if 'Mask' in event.message.text:
+#        try:
+#         repsonse = line_select_overall(event.message.text)
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=repsonse)
+#         )
+#        except:
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+#    elif 'Clinic' in event.message.text:
+#        try:
+#         repsonse = line_select_overall(event.message.text)
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=repsonse)
+#         )
+#        except:
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+#    elif 'Case' in event.message.text:
+#        try:
+#         repsonse = line_select_overall(event.message.text)
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=repsonse)
+#         )
+#        except:
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+#    elif event.message.text == "HKtest":
+#        try:
+#         repsonse= exec(open("hk_covid19.py").read())
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(repsonse)
+#         )
+#        except: 
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+#    elif 'Record' in event.message.text:
+#        try:
+#         record_list = prepare_record(event.message.text)
+#         reply = line_insert_record(record_list)
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=reply)
+#         )
+#        except:
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+#    else:
+#         X = redis1.incr(event.message.text)
+#         line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=f'You said {event.message.text} for {X} time')
+#        )
         # msg = 'I don\'t understand "' + event.message.text + '"'
         # line_bot_api.reply_message(
         #    event.reply_token,
