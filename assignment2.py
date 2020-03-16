@@ -29,7 +29,7 @@ channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
 heroku_port = os.getenv('PORT', None)
 
 HOST = "redis-16496.c114.us-east-1-4.ec2.cloud.redislabs.com"
-PWD = "XBD7myH78zcTm17UmsB0tjoMzVsPnmei"
+PWD =  "XBD7myH78zcTm17UmsB0tjoMzVsPnmei"
 PORT = "16496" 
 
 redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
@@ -130,11 +130,12 @@ def handle_TextMessage(event):
          )
     elif event.message.text == "HKtest":
         try:
+         repsonse= exec(open("hk_covid19.py").read())
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=exec(open("hk_covid19.py").read()))
+            TextSendMessage(repsonse)
          )
-        except:
+        except: 
          line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='Please retry it later')
@@ -156,7 +157,7 @@ def handle_TextMessage(event):
          X = redis1.incr(event.message.text)
          line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=X)
+            TextSendMessage(text=f'You said {event.message.text} for {X} time')
         )
         # msg = 'I don\'t understand "' + event.message.text + '"'
         # line_bot_api.reply_message(
