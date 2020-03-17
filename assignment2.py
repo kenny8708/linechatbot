@@ -166,10 +166,6 @@ def handle_TextMessage(event):
         X = redis1.incr(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-<<<<<<< HEAD
-            TextSendMessage(text=f'I do not understand {event.message.text} for {X} time')
-        )
-=======
             TextSendMessage(text=f'You said {event.message.text} for {X} time')
         )            
 
@@ -233,7 +229,6 @@ def handle_TextMessage(event):
 
 
 
->>>>>>> 2ee0d465e1365c655526f0ad3bfdd5965244f9f3
         # msg = 'I don\'t understand "' + event.message.text + '"'
         # line_bot_api.reply_message(
         #    event.reply_token,
