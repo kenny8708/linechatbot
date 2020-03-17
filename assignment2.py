@@ -157,7 +157,31 @@ def handle_TextMessage(event):
         )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-
+        
+    elif event.message.text == "Mask": 
+        buttons_template = TemplateSendMessage(
+        alt_text='Please check on smartphone.',
+        template=ButtonsTemplate(
+            title='Mask Brand',
+            text='Please select',
+            thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
+            actions=[
+                MessageAction(
+                    label='3M',
+                    text='3M Mask'
+                ),
+                MessageAction(
+                    label='Medicom',
+                    text='Medicom Mask'
+                ),
+                MessageAction(
+                    label='Mask Location',
+                    text='Mask Location'
+                ),
+            ]
+        )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)    
 
 
 
