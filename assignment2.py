@@ -157,7 +157,45 @@ def handle_TextMessage(event):
         )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-
+    if 'Mask' in event.message.text:
+             try:
+              buttons_template = TemplateSendMessage(
+              alt_text='Please check on smartphone.',
+              template=ButtonsTemplate(
+              title='Mask Brand',
+              text='Please select',
+              thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
+              actions=[
+                 MessageAction(
+                     label='3M',
+                     text='3M Mask'
+                 ),
+                 MessageAction(
+                     label='Medicom',
+                     text='Medicom Mask'
+                 ),
+                 MessageAction(
+                     label='Mask Location',
+                     text='Mask Location'
+                 ),
+                   ]
+              )
+              )
+             except:
+               line_bot_api.reply_message(
+               event.reply_token,
+               TextSendMessage(text='Please retry it later')
+              )
+    if event.message.text == "Mask Location":    
+        def location_send_message():
+            location = LocationSendMessage(
+            title = 'Mask Location！',
+            address = 'Kai Tin Shopping Centre',
+            latitude = 22.308132,
+            longitude = 114.237416
+                 )
+              line_bot_api.push_message(user_id, location)
+              return 'LocationSendMessage Done!'
 
 
 
@@ -171,51 +209,6 @@ def handle_TextMessage(event):
 
 
 # Handler function for Text Message (Kenny's version)
-     if 'Mask' in event.message.text:
-         try:
-
-          buttons_template = TemplateSendMessage(
-          alt_text='Please check on smartphone.',
-          template=ButtonsTemplate(
-            title='Mask Brand',
-            text='Please select',
-            thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
-            actions=[
-                MessageAction(
-                    label='3M',
-                    text='3M Mask'
-                ),
-                MessageAction(
-                    label='Medicom',
-                    text='Medicom Mask'
-                ),
-                MessageAction(
-                    label='Mask Location',
-                    text='Mask Location'
-                ),
-                   ]
-              )
-              )
-         except:
-            line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-      if event.message.text == "Mask Location":    
-            def location_send_message():
-               location = LocationSendMessage(
-               title = 'Mask Location！',
-               address = 'Kai Tin Shopping Centre',
-               latitude = 22.308132,
-               longitude = 114.237416
-                 )
-              line_bot_api.push_message(user_id, location)
-              return 'LocationSendMessage Done!'
-
-
-
-
-
 #    elif 'Clinic' in event.message.text:
 #        try:
 #         repsonse = line_select_overall(event.message.text)
