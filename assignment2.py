@@ -95,21 +95,19 @@ def callback():
 
     return 'OK'
 
-# Latest COVID-19 Statistics in HK
-url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
-s=requests.get(url1).content  
-hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
-
-hk1=hk.iloc[-1]['As of date']
-hk2=hk.iloc[-1]['Number of confirmed cases']
-hk3=hk.iloc[-1]['Number of ruled out cases']
-hk4=hk.iloc[-1]['Number of cases still hospitalised for investigation']
-hk5=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
-hk6=hk.iloc[-1]['Number of death cases']
-hk7=hk.iloc[-1]['Number of discharge cases']
-hk8=hk.iloc[-1]['Number of probable cases']
-
-                              
+# Extract Latest COVID-19 Statistics in HK
+ url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
+ s=requests.get(url1).content  
+ hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
+ hk1=hk.iloc[-1]['As of date']
+ hk2=hk.iloc[-1]['Number of confirmed cases']
+ hk3=hk.iloc[-1]['Number of ruled out cases']
+ hk4=hk.iloc[-1]['Number of cases still hospitalised for investigation']
+ hk5=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
+ hk6=hk.iloc[-1]['Number of death cases']
+ hk7=hk.iloc[-1]['Number of discharge cases']
+ hk8=hk.iloc[-1]['Number of probable cases']
+                           
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
@@ -119,13 +117,7 @@ def handle_TextMessage(event):
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-    
 #    elif event.message.text == "Clinic": 
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=event.message.text)
-#        )
-#    elif event.message.text == "Case": 
 #        line_bot_api.reply_message(
 #            event.reply_token,
 #            TextSendMessage(text=event.message.text)
@@ -152,9 +144,8 @@ def handle_TextMessage(event):
         )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-
 # Carousel Template (Mask Supply)
-    elif event.message.text == "Mask": 
+    if event.message.text == "Mask": 
          carousel = TemplateSendMessage(
          alt_text='Please check on smartphone.',
          template=CarouselTemplate(
@@ -201,9 +192,7 @@ def handle_TextMessage(event):
     )
     )
     line_bot_api.reply_message(event.reply_token,carousel)
-
 #Location function
-
     if event.message.text == "Mask Location":    
         line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
@@ -211,8 +200,7 @@ def handle_TextMessage(event):
             latitude=22.308132, 
             longitude=114.237416)
         )
-        
-    
+
 #elif event.message.text == "Case":
 #        buttons_template = TemplateSendMessage(
 #        alt_text='Please check on smartphone.',
