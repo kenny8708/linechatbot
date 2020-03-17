@@ -213,7 +213,26 @@ def handle_TextMessage(event):
             )
         
     
-
+elif event.message.text == "Case":
+        buttons_template = TemplateSendMessage(
+        alt_text='Please check on smartphone.',
+        template=ButtonsTemplate(
+            title='Hong Kong',
+            text='Please select',
+            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
+            actions=[
+                MessageAction(
+                    label='Latest Statistics',
+                    text='HK Stat'
+                ),
+                URIAction(
+                    label='Dashboard',
+                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
+                ),
+            ]
+        )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 # Text Message (count)
