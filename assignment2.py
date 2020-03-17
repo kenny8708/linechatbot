@@ -127,6 +127,27 @@ def handle_TextMessage(event):
             TextSendMessage(text=event.message.text)
         )
 
+    elif event.message.text == "Clinic": 
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
+
+    elif event.message.text == "Case": 
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
+
+# Record??
+    elif event.message.text == "Record": 
+         record_list = prepare_record(event.message.text)
+         reply = line_insert_record(record_list)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply)
+        )
+
 # Text Message (count)
     else:
         X = redis1.incr(event.message.text)
