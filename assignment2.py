@@ -113,16 +113,23 @@ hk8=hk.iloc[-1]['Number of probable cases']
 
 # Handler function for Text Message
 def handle_TextMessage(event):
+# Handler function for Text Message (Latest COVID-19 Statistics in HK)
     if event.message.text == "HK Stat":    
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-            
+
+    else:
+        X = redis1.incr(event.message.text)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'You said {event.message.text} for {X} time')
+        )            
 
 
-
+# Handler function for Text Message (Kenny's version)
 #    if 'Mask' in event.message.text:
 #        try:
 #         repsonse = line_select_overall(event.message.text)
@@ -159,18 +166,6 @@ def handle_TextMessage(event):
 #            event.reply_token,
 #            TextSendMessage(text='Please retry it later')
 #         )
-#    elif event.message.text == "HKtest":
-#        try:
-#         repsonse= exec(open("hk_covid19.py").read())
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(repsonse)
-#         )
-#        except: 
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
 #    elif 'Record' in event.message.text:
 #        try:
 #         record_list = prepare_record(event.message.text)
@@ -190,6 +185,9 @@ def handle_TextMessage(event):
 #            event.reply_token,
 #            TextSendMessage(text=f'You said {event.message.text} for {X} time')
 #        )
+
+
+
         # msg = 'I don\'t understand "' + event.message.text + '"'
         # line_bot_api.reply_message(
         #    event.reply_token,
