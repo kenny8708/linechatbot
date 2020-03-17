@@ -158,7 +158,35 @@ def handle_TextMessage(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
-
+    elif event.message.text == "Clinic":
+        buttons_template = TemplateSendMessage(
+        alt_text='Please check on smartphone.',
+        template=ButtonsTemplate(
+            title='Clinic information in Hong Kong',
+            text='Please select',
+            thumbnail_image_url='https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.ha.org.hk%2Fhaho%2Fho%2Fsnp%2Fv3%2Fimages%2Fgopc_intro1.jpg&imgrefurl=https%3A%2F%2Fwww.ha.org.hk%2Fvisitor%2Fha_visitor_text_index.asp%3FContent_ID%3D10052%26Lang%3DENG%26Ver%3DTEXT&tbnid=cGAoVj-9oBDGmM&vet=12ahUKEwjTj_vysaHoAhU9KqYKHaLsAvsQMygAegUIARDSAQ..i&docid=MpFiDNsjx9pNZM&w=200&h=133&q=Gerenal%20Clinic%20ha&hl=zh-TW&safe=off&ved=2ahUKEwjTj_vysaHoAhU9KqYKHaLsAvsQMygAegUIARDSAQ',
+            actions=[
+                MessageAction(
+                    label='GOPC',
+                    text='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                ),
+                URIAction(
+                    label='Location of all GOPC',
+                    uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=EMT&service_code_id=461&service_type=GOPD&location='
+                ),
+		    URIAction(
+                    label='Service Arrangement under the Situation of Severe Respiratory Disease',
+                    uri='https://www.ha.org.hk/visitor/ha_view_content.asp?Parent_ID=254780&Content_ID=254899&Lang=ENG&Ver=TEXT'
+                ),
+		    URIAction(
+                    label='Evening, Sundays & Public Holidays’ General Out-patient Clinic Service, The Year of 2020',
+                    uri='https://www.ha.org.hk/visitor/ha_view_content.asp?Parent_ID=10052&Content_ID=254226&Lang=ENG&Dimension=100'
+                ),
+            ]
+        )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+	
 
 
 # Text Message (count)
