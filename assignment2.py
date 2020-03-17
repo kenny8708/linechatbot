@@ -113,7 +113,7 @@ hk8=hk.iloc[-1]['Number of probable cases']
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-# Handler function for Text Message (Latest COVID-19 Statistics in HK)
+# Text Message (Latest COVID-19 Statistics in HK)
     if event.message.text == "HK Stat":    
         line_bot_api.reply_message(
             event.reply_token,
@@ -121,6 +121,13 @@ def handle_TextMessage(event):
             )
         )
 
+    elif event.message.text == "Mask": 
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
+
+# Text Message (count)
     else:
         X = redis1.incr(event.message.text)
         line_bot_api.reply_message(
