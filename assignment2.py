@@ -120,7 +120,39 @@ def handle_TextMessage(event):
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-#    elif event.message.text == "Mask": 
+    elif event.message.text == "Mask": 
+        buttons_template = TemplateSendMessage(
+          alt_text='Please check on smartphone.',
+          template=ButtonsTemplate(
+            title='Mask Brand',
+            text='Please select',
+            thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
+            actions=[
+                MessageAction(
+                    label='3M',
+                    text='3M Mask'
+                ),
+                MessageAction(
+                    label='Medicom',
+                    text='Medicom Mask'
+                ),
+                MessageAction(
+                    label='Mask Location',
+                    text='Mask Location'
+                ),
+                   ]
+              )
+              )
+    if event.message.text == "Mask Location":    
+            def location_send_message():
+               location = LocationSendMessage(
+               title = 'Mask Location！',
+               address = 'Kai Tin Shopping Centre',
+               latitude = 22.308132,
+               longitude = 114.237416
+                 )
+              line_bot_api.push_message(user_id, location)
+              return 'LocationSendMessage Done!' 
 #        line_bot_api.reply_message(
 #            event.reply_token,
 #            TextSendMessage(text=event.message.text)
