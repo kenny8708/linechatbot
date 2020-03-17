@@ -120,34 +120,21 @@ def handle_TextMessage(event):
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-
     elif event.message.text == "Mask": 
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
-
     elif event.message.text == "Clinic": 
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
-
     elif event.message.text == "Case": 
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
         )
-
-# Record??
-    elif event.message.text == "Record": 
-         record_list = prepare_record(event.message.text)
-         reply = line_insert_record(record_list)
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply)
-        )
-
 # Text Message (count)
     else:
         X = redis1.incr(event.message.text)
