@@ -154,7 +154,7 @@ def handle_TextMessage(event):
 
 
     elif event.message.text == "Mask": 
-        carousel = TemplateSendMessage(
+         carousel = TemplateSendMessage(
          alt_text='Please check on smartphone.',
          template=CarouselTemplate(
            columns=[
