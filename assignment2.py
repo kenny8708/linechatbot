@@ -238,27 +238,27 @@ def handle_TextMessage(event):
             alt_text='Please check on smartphone.',
             template=ImageCarouselTemplate(
             columns=[    
-            ImageCarouselColumn(
-                image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
-                action=URIAction(
-			        label='Home',
-			        uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                ImageCarouselColumn(
+                    image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
+                    action=URIAction(
+			            label='Home',
+			            uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                    )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://gleneagles.hk/images/Health-Screening-Clinic_Echocardiography_5808a.jpg.pagespeed.ce.2clbkujzUs.jpg',
+                    action=URIAction(
+			            label='GOPC',
+		        	    uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                    )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_900,h_475/https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
+                    action=URIAction(
+			            label='Working hour',
+                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                    )
                 )
-            ),
-            ImageCarouselColumn(
-                image_url='https://gleneagles.hk/images/Health-Screening-Clinic_Echocardiography_5808a.jpg.pagespeed.ce.2clbkujzUs.jpg',
-                action=URIAction(
-			        label='GOPC',
-		        	uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
-                )
-            ),
-            ImageCarouselColumn(
-                image_url='https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_900,h_475/https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
-                action=URIAction(
-			        label='Working hour',
-                    uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
-                )
-            )
         ]
         )
         )
@@ -267,7 +267,7 @@ def handle_TextMessage(event):
             line_bot_api.reply_message(
            		event.reply_token,
             		TextSendMessage(text='Please retry it later')
-         )	
+             )	
 
 # Text Message (count)
     else:
