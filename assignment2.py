@@ -208,11 +208,11 @@ def handle_TextMessage(event):
                     )
                 ]
             )
-        ]
-     )
-     )
-     line_bot_api.reply_message(event.reply_token,carousel)
-       except:
+         ]
+         )
+         )
+         line_bot_api.reply_message(event.reply_token,carousel)
+        except:
          line_bot_api.reply_message(
            event.reply_token,
             TextSendMessage(text='Please retry it later')
