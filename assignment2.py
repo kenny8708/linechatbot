@@ -143,16 +143,16 @@ def handle_TextMessage(event):
                    ]
               )
               )
-    if event.message.text == "Mask Location":    
-        client.replyMessage(event.replyToken,
-              {
-        type: 'location',
-        title: 'Mask Location',
-        address: "Kai Tin Shopping Centre",
-        latitude = 22.308132,
-        longitude = 114.237416
-              }
-              )
+    #if event.message.text == "Mask Location":    
+    #    client.replyMessage(event.replyToken,
+    #          {
+    #    type: 'location',
+    #    title: 'Mask Location',
+    #    address: "Kai Tin Shopping Centre",
+    #    latitude = 22.308132,
+    #    longitude = 114.237416
+    #          }
+    #          )
 #        line_bot_api.reply_message(
 #            event.reply_token,
 #            TextSendMessage(text=event.message.text)
