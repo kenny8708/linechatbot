@@ -130,6 +130,7 @@ def handle_TextMessage(event):
 #            event.reply_token,
 #            TextSendMessage(text=event.message.text)
 #        )
+
 # Buttons Template (Latest COVID-19 Statistics in HK)
     if event.message.text == "Case":
         buttons_template = TemplateSendMessage(
@@ -152,7 +153,7 @@ def handle_TextMessage(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
-
+# Carousel Template (Mask Supply)
     elif event.message.text == "Mask": 
          carousel = TemplateSendMessage(
          alt_text='Please check on smartphone.',
@@ -192,7 +193,7 @@ def handle_TextMessage(event):
                     ),
                     MessageAction(
                         label='Physical Store',
-                        text='Location'
+                        text='Mask Location'
                     )
                 ]
             )
@@ -201,14 +202,15 @@ def handle_TextMessage(event):
     )
     line_bot_api.reply_message(event.reply_token,carousel)
 
+#Location function
 
-    if event.message.text == "Location":    
+    if event.message.text == "Mask Location":    
         line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
-            address='Mask Location', 
+            address='Kai Tin Shopping Centre', 
             latitude=22.308132, 
             longitude=114.237416)
-            )
+        )
         
     
 #elif event.message.text == "Case":
