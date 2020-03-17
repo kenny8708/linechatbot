@@ -137,17 +137,17 @@ def handle_TextMessage(event):
 #        )
 
 # Buttons Template (Latest COVID-19 Statistics in HK)
-    elif event.message.text == "Buttons Testing":
+    elif event.message.text == "Buttons Template":
         buttons_template = TemplateSendMessage(
-        alt_text='Please check in Smartphone.',
+        alt_text='Buttons Template',
         template=ButtonsTemplate(
-            title='HK COVID-19 Info',
-            text='testing testing testing',
-            thumbnail_image_url='Flag_of_Hong_Kong.png',
+            title='這是ButtonsTemplate',
+            text='ButtonsTemplate可以傳送text,uri',
+            thumbnail_image_url='顯示在開頭的大圖片網址',
             actions=[
                 MessageTemplateAction(
                     label='ButtonsTemplate',
-                    text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night'
+                    text='ButtonsTemplate'
                 ),
                 URITemplateAction(
                     label='VIDEO1',
@@ -162,6 +162,8 @@ def handle_TextMessage(event):
         )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
+
+
 
 
 # Text Message (count)
