@@ -201,36 +201,6 @@ def handle_TextMessage(event):
             longitude=114.237416)
         )
 
-    elif event.message.text == "Clinic": 
-        Clinic_template = TemplateSendMessage(
-        alt_text='Please check on smartphone.',
-        template=ClinicTemplate(
-                title='GOPC',
-                text='Please select',
-thumbnail_image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
-                actions=[
-                    URIAction(
-                        label='Home',
-                        uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
-                    ),
-                    URIAction(
-                        label='All GOPC',
-                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=EMT&service_code_id=461&service_type=GOPD&location='
-                    ),
-                    URIAction(
-                        label='Special arrangement',
-                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
-                    ),
-URIAction(
-                        label='Working hour',
-                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
-                    )
-                ]
-            )
-    )
-        line_bot_api.reply_message(event.reply_token, Clinic_template)
-	
-	
 #elif event.message.text == "Case":
 #        buttons_template = TemplateSendMessage(
 #        alt_text='Please check on smartphone.',
