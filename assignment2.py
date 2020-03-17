@@ -143,7 +143,7 @@ def handle_TextMessage(event):
         template=ButtonsTemplate(
             title='Hong Kong',
             text='Please select',
-            thumbnail_image_url='https://example.com/image.jpg',
+            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
             actions=[
                 MessageAction(
                     label='Latest Statistics',
