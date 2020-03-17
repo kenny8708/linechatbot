@@ -122,8 +122,8 @@ def handle_TextMessage(event):
         )
     elif event.message.text == "Mask": 
         buttons_template = TemplateSendMessage(
-          alt_text='Please check on smartphone.',
-          template=ButtonsTemplate(
+        alt_text='Please check on smartphone.',
+        template=ButtonsTemplate(
             title='Mask Brand',
             text='Please select',
             thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
@@ -141,9 +141,9 @@ def handle_TextMessage(event):
                     text='Mask Location'
                 ),
             ]
-          )
-          )
-          line_bot_api.reply_message(event.reply_token, buttons_template)
+        )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
     if event.message.text == "Mask Location":    
         client.replyMessage(event.replyToken,
               {
