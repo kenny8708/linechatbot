@@ -141,12 +141,12 @@ def handle_TextMessage(event):
         buttons_template = TemplateSendMessage(
         alt_text='Please check on smartphone.',
         template=ButtonsTemplate(
-            title='Menu',
+            title='Hong Kong',
             text='Please select',
-            thumbnail_image_url='https://example.com/image.jpg',
+            thumbnail_image_url='Flag_of_Hong_Kong.png',
             actions=[
                 MessageAction(
-                    label='Latest HK Stat',
+                    label='Latest Statistics',
                     text='HK Stat'
                 ),
                 URIAction(
