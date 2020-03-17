@@ -138,7 +138,7 @@ def handle_TextMessage(event):
 
 # Buttons Template (Latest COVID-19 Statistics in HK)
     elif event.message.text == "Buttons Template":
-        buttons_template_message = TemplateSendMessage(
+        buttons_template = TemplateSendMessage(
         alt_text='Buttons Template',
         template=ButtonsTemplate(
             title='Menu',
@@ -161,7 +161,7 @@ def handle_TextMessage(event):
             ]
         )
         )
-#        line_bot_api.reply_message(event.reply_token, buttons_template)
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 
