@@ -211,8 +211,8 @@ def handle_TextMessage(event):
         ]
      )
      )
-     line_bot_api.reply_message(event.reply_token,carousel)
-       except:
+         line_bot_api.reply_message(event.reply_token,carousel)
+        except:
          line_bot_api.reply_message(
            event.reply_token,
             TextSendMessage(text='Please retry it later')
@@ -231,28 +231,43 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    
-#elif event.message.text == "Case":
-#        buttons_template = TemplateSendMessage(
-#        alt_text='Please check on smartphone.',
-#        template=ButtonsTemplate(
-#            title='Hong Kong',
-#            text='Please select',
-#            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
-#            actions=[
-#                MessageAction(
-#                   label='Latest Statistics',
-#                   text='HK Stat'
-#               ),
-#               URIAction(
-#                   label='Dashboard',
-#                   uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
-#               ),
-#           ]
-#        )
-#        )
-#        line_bot_api.reply_message(event.reply_token, buttons_template)
-
+#if Clinic
+    if event.message.text == "Clinic": 
+        try:
+            clinicimage = TemplateSendMessage(
+            alt_text='Please check on smartphone.',
+            template=ImageCarouselTemplate(
+            columns=[    
+            ImageCarouselColumn(
+                image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
+                action=URIAction(
+			        label='Home',
+			        uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                )
+            ),
+            ImageCarouselColumn(
+                image_url='https://gleneagles.hk/images/Health-Screening-Clinic_Echocardiography_5808a.jpg.pagespeed.ce.2clbkujzUs.jpg',
+                action=URIAction(
+			        label='GOPC',
+		        	uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                )
+            ),
+            ImageCarouselColumn(
+                image_url='https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_900,h_475/https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
+                action=URIAction(
+			        label='Working hour',
+                    uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                )
+            )
+        ]
+        )
+        )
+            line_bot_api.reply_message(event.reply_token,clinicimage)
+        except:
+            line_bot_api.reply_message(
+           		event.reply_token,
+            		TextSendMessage(text='Please retry it later')
+         )	
 
 # Text Message (count)
     else:
@@ -418,31 +433,3 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=options.debug, port=heroku_port)
 
 	
-    elif event.message.text == "Clinic": 
-        Clinic_template = TemplateSendMessage(
-        alt_text = 'Please check on smartphone.',
-        template = ClinicTemplate(
-                title = 'GOPC',
-                text = 'Please select',
-thumbnail_image_url = 'http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
-                actions = [
-                    URIAction(
-                        label = 'Home',
-                        uri = 'https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
-                    ),
-                    URIAction(
-                        label = 'All GOPC',
-                        uri = 'https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=EMT&service_code_id=461&service_type=GOPD&location='
-                    ),
-                    URIAction(
-                        label = 'Special arrangement',
-                        uri = 'https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
-                    ),
-		    URIAction(
-                        label = 'Working hour',
-                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
-                    )
-                ]
-            )
-    )
-        line_bot_api.reply_message(event.reply_token, Clinic_template)	
