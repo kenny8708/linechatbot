@@ -110,10 +110,9 @@ hk7=hk.iloc[-1]['Number of discharge cases']
 hk8=hk.iloc[-1]['Number of probable cases']
 
                               
-
 # Handler function for Text Message
 def handle_TextMessage(event):
-# Text Message (Latest COVID-19 Statistics in HK)
+#  Text Message (Latest COVID-19 Statistics in HK)
     if event.message.text == "HK Stat":    
         line_bot_api.reply_message(
             event.reply_token,
@@ -131,9 +130,8 @@ def handle_TextMessage(event):
 #            event.reply_token,
 #            TextSendMessage(text=event.message.text)
 #        )
-
 # Buttons Template (Latest COVID-19 Statistics in HK)
-    elif event.message.text == "Case":
+    if event.message.text == "Case":
         buttons_template = TemplateSendMessage(
         alt_text='Please check on smartphone.',
         template=ButtonsTemplate(
@@ -155,7 +153,7 @@ def handle_TextMessage(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
-    if event.message.text == "Mask": 
+    elif event.message.text == "Mask": 
         carousel = TemplateSendMessage(
          alt_text='Please check on smartphone.',
          template=CarouselTemplate(
@@ -213,26 +211,26 @@ def handle_TextMessage(event):
             )
         
     
-elif event.message.text == "Case":
-        buttons_template = TemplateSendMessage(
-        alt_text='Please check on smartphone.',
-        template=ButtonsTemplate(
-            title='Hong Kong',
-            text='Please select',
-            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
-            actions=[
-                MessageAction(
-                    label='Latest Statistics',
-                    text='HK Stat'
-                ),
-                URIAction(
-                    label='Dashboard',
-                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
-                ),
-            ]
-        )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+#elif event.message.text == "Case":
+#        buttons_template = TemplateSendMessage(
+#        alt_text='Please check on smartphone.',
+#        template=ButtonsTemplate(
+#            title='Hong Kong',
+#            text='Please select',
+#            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
+#            actions=[
+#                MessageAction(
+#                   label='Latest Statistics',
+#                   text='HK Stat'
+#               ),
+#               URIAction(
+#                   label='Dashboard',
+#                   uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
+#               ),
+#           ]
+#        )
+#        )
+#        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 # Text Message (count)
