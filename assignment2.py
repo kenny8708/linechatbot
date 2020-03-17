@@ -113,13 +113,18 @@ hk8=hk.iloc[-1]['Number of probable cases']
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
-    if event.message.text == "HK Stat":    
+    if event.message.text == "HK Stat": 
+        try:   
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-    
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
 #    elif event.message.text == "Clinic": 
 #        line_bot_api.reply_message(
 #            event.reply_token,
@@ -133,6 +138,7 @@ def handle_TextMessage(event):
 
 # Buttons Template (Latest COVID-19 Statistics in HK)
     if event.message.text == "Case":
+        try: 
         buttons_template = TemplateSendMessage(
         alt_text='Please check on smartphone.',
         template=ButtonsTemplate(
@@ -152,9 +158,14 @@ def handle_TextMessage(event):
         )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
 # Carousel Template (Mask Supply)
-    elif event.message.text == "Mask": 
+    if event.message.text == "Mask": 
+        try:
          carousel = TemplateSendMessage(
          alt_text='Please check on smartphone.',
          template=CarouselTemplate(
@@ -201,17 +212,25 @@ def handle_TextMessage(event):
     )
     )
     line_bot_api.reply_message(event.reply_token,carousel)
-
+       except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
 #Location function
-
-    if event.message.text == "Mask Location":    
+    if event.message.text == "Mask Location":
+        try:    
         line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
             address='Kai Tin Shopping Centre', 
             latitude=22.308132, 
             longitude=114.237416)
         )
-        
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
     
 #elif event.message.text == "Case":
 #        buttons_template = TemplateSendMessage(
