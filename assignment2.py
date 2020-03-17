@@ -199,8 +199,8 @@ def handle_TextMessage(event):
                 ]
             )
         ]
-        )
-        )
+    )
+    )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
 
