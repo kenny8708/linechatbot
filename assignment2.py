@@ -175,8 +175,8 @@ def handle_TextMessage(event):
                     text='Medicom Mask'
                 ),
                 MessageAction(
-                    label='Mask Location',
-                    text='Mask Location'
+                    label='Location',
+                    text='Location'
                 ),
             ]
         )
@@ -184,7 +184,7 @@ def handle_TextMessage(event):
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
-    elif event.message.text == "Mask Location":    
+    if event.message.text == "Location":    
         line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
             address='Mask Location', 
