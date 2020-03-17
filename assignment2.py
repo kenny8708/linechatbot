@@ -137,9 +137,9 @@ def handle_TextMessage(event):
 #        )
 
 # Buttons Template (Latest COVID-19 Statistics in HK)
-    elif event.message.text == "Buttons Template":
+    elif event.message.text == "Case":
         buttons_template = TemplateSendMessage(
-        alt_text='Buttons Template',
+        alt_text='Please check on smartphone.',
         template=ButtonsTemplate(
             title='Menu',
             text='Please select',
@@ -147,11 +147,11 @@ def handle_TextMessage(event):
             actions=[
                 MessageAction(
                     label='Latest HK Stat',
-                    text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night'
+                    text='HK Stat'
                 ),
                 URIAction(
-                    label='VIDEO1',
-                    uri='http://example.com/'
+                    label='Dashboard',
+                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
                 ),
             ]
         )
