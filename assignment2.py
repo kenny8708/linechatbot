@@ -96,17 +96,17 @@ def callback():
     return 'OK'
 
 # Extract Latest COVID-19 Statistics in HK
- url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
- s=requests.get(url1).content  
- hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
- hk1=hk.iloc[-1]['As of date']
- hk2=hk.iloc[-1]['Number of confirmed cases']
- hk3=hk.iloc[-1]['Number of ruled out cases']
- hk4=hk.iloc[-1]['Number of cases still hospitalised for investigation']
- hk5=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
- hk6=hk.iloc[-1]['Number of death cases']
- hk7=hk.iloc[-1]['Number of discharge cases']
- hk8=hk.iloc[-1]['Number of probable cases']
+url1='http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv '
+s=requests.get(url1).content  
+hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
+hk1=hk.iloc[-1]['As of date']
+hk2=hk.iloc[-1]['Number of confirmed cases']
+hk3=hk.iloc[-1]['Number of ruled out cases']
+hk4=hk.iloc[-1]['Number of cases still hospitalised for investigation']
+hk5=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
+hk6=hk.iloc[-1]['Number of death cases']
+hk7=hk.iloc[-1]['Number of discharge cases']
+hk8=hk.iloc[-1]['Number of probable cases']
                            
 # Handler function for Text Message
 def handle_TextMessage(event):
