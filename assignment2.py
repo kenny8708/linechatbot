@@ -113,7 +113,7 @@ hk8=hk.iloc[-1]['Number of probable cases']
 
 # Handler function for Text Message
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
+def handle_TextMessage(event):
 # Text Message (Latest COVID-19 Statistics in HK)
     if event.message.text == "HK Stat":    
         line_bot_api.reply_message(
