@@ -158,45 +158,46 @@ def handle_TextMessage(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
 
+
     elif event.message.text == "Mask": 
         Carousel_template = TemplateSendMessage(
         alt_text='Please check on smartphone.',
         template=CarouselTemplate(
         columns=[
             CarouselColumn(
-             thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
-             title='Mask Brand',
-             text='Please select',
-             actions=[
-                MessageTemplateAction(
-                    label='3M',
-                    text='3M Mask'
-                ),
-                MessageTemplateAction(
+              thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
+              title='Mask Brand',
+              text='Please select',
+              actions=[
+                 MessageAction(
+                     label='3M',
+                     text='3M Mask'
+                 ),
+                 MessageAction(
                     label='Medicom',
                     text='Medicom Mask'
-                ),
-                MessageTemplateAction(
+                 ),
+                 MessageAction(
                     label='超立體',
                     text='超立體口睪'
-                )
-              ]
+                 )
+               ]
             ),
             CarouselColumn(
                 thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
                 title='Mask location',
                 text='Please select',
                 actions=[
-                    PostbackTemplateAction(
+                    PostbackAction(
                         label='postback2',
                         text='postback text2',
                         data='action=buy&itemid=2'
                     ),
-                    MessageTemplateAction(
+                    MessageAction(
                         label='Store',
                         text='Location'
                     ),
-                    URITemplateAction(
+                    URIAction(
                         label='Online',
                         uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     )
@@ -205,7 +206,7 @@ def handle_TextMessage(event):
             ]
           )
         )
-            line_bot_api.reply_message(event.reply_token,Carousel_template)
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
 
 
     if event.message.text == "Location":    
