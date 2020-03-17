@@ -113,12 +113,13 @@ hk8=hk.iloc[-1]['Number of probable cases']
 
 # Handler function for Text Message
 def handle_TextMessage(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
+    if event.message.text == "HK Stat":    
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
+            )
         )
-    )
-
+            
 
 
 
