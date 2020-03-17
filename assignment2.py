@@ -146,18 +146,13 @@ def handle_TextMessage(event):
             thumbnail_image_url='https://example.com/image.jpg',
             actions=[
                 MessageAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
+                    label='Latest HK Stat',
+                    text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night'
                 ),
                 URIAction(
                     label='VIDEO1',
                     uri='http://example.com/'
                 ),
-                PostbackAction(
-                    label='postback',
-                    text='postback text',
-                    data='postback1'
-                )
             ]
         )
         )
