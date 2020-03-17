@@ -120,21 +120,50 @@ def handle_TextMessage(event):
             TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
             )
         )
-    elif event.message.text == "Mask": 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
+#    elif event.message.text == "Mask": 
+#        line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=event.message.text)
+#        )
+#    elif event.message.text == "Clinic": 
+#        line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=event.message.text)
+#        )
+#    elif event.message.text == "Case": 
+#        line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=event.message.text)
+#        )
+
+# Buttons Template (Latest COVID-19 Statistics in HK)
+    elif event.message.text == "Buttons Testing":
+        buttons_template = TemplateSendMessage(
+        alt_text='Please check in Smartphone.',
+        template=ButtonsTemplate(
+            title='HK COVID-19 Info',
+            text='testing testing testing',
+            thumbnail_image_url='Flag_of_Hong_Kong.png',
+            actions=[
+                MessageTemplateAction(
+                    label='ButtonsTemplate',
+                    text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night'
+                ),
+                URITemplateAction(
+                    label='VIDEO1',
+                    uri='影片網址'
+                ),
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='postback1'
+                )
+            ]
         )
-    elif event.message.text == "Clinic": 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
-    elif event.message.text == "Case": 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
+    )
+    line_bot_api.reply_message(event.reply_token, buttons_template)
+
+
 # Text Message (count)
     else:
         X = redis1.incr(event.message.text)
