@@ -127,23 +127,16 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-
-
-#testing function
-    if (event.message.text.split('')[0] == "ABC") and (len(event.message.text.split('')) == 2): 
-        try:   
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text=f'{hk2}' 
-            )
-        )
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-
-
+#    elif event.message.text == "Clinic": 
+#        line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=event.message.text)
+#        )
+#    elif event.message.text == "Case": 
+#        line_bot_api.reply_message(
+#            event.reply_token,
+#            TextSendMessage(text=event.message.text)
+#        )
 
 # Buttons Template (Latest COVID-19 Statistics in HK)
     if event.message.text == "Case":
