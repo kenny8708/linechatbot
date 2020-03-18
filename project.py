@@ -97,14 +97,8 @@ def callback():
 
 # Latest COVID-19 Statistics in HK
 url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
-url2="http://www.chp.gov.hk/files/misc/enhanced_sur_pneumonia_wuhan_eng.csv"  
-url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
-s=requests.get(url1).content
-s2=requests.get(url2).content
-s3=requests.get(url3).content   
+s=requests.get(url1).content  
 hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
-cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
-blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))
 
 hk1=hk.iloc[-1]['As of date']
 hk2=hk.iloc[-1]['Number of confirmed cases']
@@ -116,9 +110,6 @@ hk7=hk.iloc[-1]['Number of ruled out cases']
 hk8=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
 hk9=hk.iloc[-1]['As of time']
 
-cc_number=cc.loc[cc['Case no.'] == int(msg)]
-cc_number1=cc_number.iloc[0]['Gender']
-cc_number2=cc_number.iloc[0]['Age']
 
                               
 # Handler function for Text Message
@@ -282,28 +273,12 @@ def handle_TextMessage(event):
              )	
 
 # Text Message (count)
-#    else:
-#        X = redis1.incr(event.message.text)
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=f'You said {event.message.text} for {X} time')
-#        )            
-
-
     else:
-        msg = event.message.text 
-        try:   
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text=f'{cc_number1} {cc_number2}'
-            )
-        )
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-
+        X = redis1.incr(event.message.text)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'You said {event.message.text} for {X} time')
+        )            
 
 
 # Handler function for Text Message (Kenny's version)
