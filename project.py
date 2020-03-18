@@ -388,21 +388,21 @@ def handle_StickerMessage(event):
 def handle_ImageMessage(event):
     line_bot_api.reply_message(
 	event.reply_token,
-	TextSendMessage(text="Nice image! Let's fight the virus together!")
+	TextSendMessage(text="Nice image! \nLet's fight the virus together!")
     )
 
 # Handler function for Video Message
 def handle_VideoMessage(event):
     line_bot_api.reply_message(
 	event.reply_token,
-	TextSendMessage(text="Nice video! Let's fight the virus together!")
+	TextSendMessage(text="Nice video! \nLet's fight the virus together!")
     )
 
 # Handler function for File Message
 def handle_FileMessage(event):
     line_bot_api.reply_message(
 	event.reply_token,
-	TextSendMessage(text="Nice file! Let's fight the virus together!")
+	TextSendMessage(text="Nice file! \nLet's fight the virus together!")
     )
 
 def line_insert_record(record_list):
