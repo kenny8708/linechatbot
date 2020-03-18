@@ -108,6 +108,7 @@ hk5=hk.iloc[-1]['Number of discharge cases']
 hk6=hk.iloc[-1]['Number of cases still hospitalised for investigation']
 hk7=hk.iloc[-1]['Number of ruled out cases']
 hk8=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
+hk9=hk.iloc[-1]['As of time']
 
 
                               
@@ -118,7 +119,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Updated on: {hk1} \nUpdate Frequency: Every Night' 
+            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Update: {hk1} {hk9} \nUpdate Frequency: Every Night' 
             )
         )
         except:
