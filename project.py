@@ -140,7 +140,7 @@ def handle_TextMessage(event):
     if event.message.text == "Case":
         try: 
          buttons_template = TemplateSendMessage(
-         alt_text='COVID-19 Cases in Hong Kong.',
+         alt_text='COVID-19 Cases in Hong Kong',
          template=ButtonsTemplate(
             title='Hong Kong',
             text='Please select',
@@ -167,7 +167,7 @@ def handle_TextMessage(event):
     if event.message.text == "Mask": 
         try:
          carousel = TemplateSendMessage(
-         alt_text='Mask Information.',
+         alt_text='Mask Information',
          template=CarouselTemplate(
            columns=[
             CarouselColumn(
