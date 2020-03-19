@@ -127,18 +127,9 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-#    elif event.message.text == "Clinic": 
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=event.message.text)
-#        )
-#    elif event.message.text == "Case": 
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=event.message.text)
-#        )
 
-# Buttons Template (Latest COVID-19 Statistics in HK)
+
+# Buttons Template (Case in HK)
     if event.message.text == "Case":
         try: 
          buttons_template = TemplateSendMessage(
