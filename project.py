@@ -282,7 +282,7 @@ def handle_TextMessage(event):
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} {Y} for {X} time')
+            TextSendMessage(text=f'You said {event.message.text} {Y.text} for {X} time')
         )            
 
 # Handler function for Text Message (Kenny's version)
