@@ -209,6 +209,10 @@ def handle_TextMessage(event):
                     MessageAction(
                         label='How to wear medical masks',
                         text='Mask2 Video'
+                    ),
+                    MessageAction(
+                        label='How to wear medical masks',
+                        text='Mask2 Video'
                     )
                 ]
             )
