@@ -183,21 +183,36 @@ def handle_TextMessage(event):
                 ]
             ),
             CarouselColumn(
-                 thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
-                 title='Mask location',
+                 thumbnail_image_url='https://logos-download.com/wp-content/uploads/2016/12/World_Health_Organization_logo_WHO.png',
+                 title='World Health Orgainization Advice',
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='Watson Mask',
-                        uri='https://play.google.com/store/apps/details?id=com.ndn.android.watsons&hl=en_US'
+                        label='When to use a mask',
+                        uri='Mask Video'
                     ),
                     URIAction(
-                        label='HKTVmall Online',
-                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
+                        label='How to wear medical masks',
+                        uri='Mask2 Video'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                 thumbnail_image_url='https://static.stheadline.com/stheadline/inewsmedia/20200316/_2020031612385066621.jpeg',
+                 title='Mask Brand',
+                 text='Please select',
+                 actions=[
+                    MessageAction(
+                        label='3M',
+                        text='3M Mask'
                     ),
                     MessageAction(
-                        label='Physical Store',
-                        text='Mask Location'
+                        label='Medicom',
+                        text='Medicom Mask'
+                    ),
+                    MessageAction(
+                        label='超立體',
+                        text='超立體口罩'
                     )
                 ]
             )
@@ -219,6 +234,22 @@ def handle_TextMessage(event):
             latitude=22.308132, 
             longitude=114.237416)
         )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    if event.message.text == "Mask Video":
+        try:    
+         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/Ded_AxFfJoQ', preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-2.tmb-1920v.png?Culture=en&sfvrsn=50396714_3'))
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    if event.message.text == "Mask Video":
+        try:    
+         line_bot_api.reply_message(event.reply_token,VideoSendMessage(original_content_url='https://youtu.be/M4olt47pr_o', preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3'))
         except:
          line_bot_api.reply_message(
            event.reply_token,
