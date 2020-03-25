@@ -184,16 +184,16 @@ def handle_TextMessage(event):
             ),
             CarouselColumn(
                  thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
-                 title='Mask location And How to wear mask',
+                 title='Mask location',
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='How to wear medical masks',
-                        text='Mask Video'
+                        label='Watson Mask',
+                        uri='https://play.google.com/store/apps/details?id=com.ndn.android.watsons&hl=en_US'
                     ),
-                    MessageAction(
-                        label='How to wear mask',
-                        text='Mask Video'
+                    URIAction(
+                        label='HKTVmall Online',
+                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     ),
                     MessageAction(
                         label='Physical Store',
