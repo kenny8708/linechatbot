@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from flask import Flask, request, abort
+from googletrans import Translator
 import os
 import sys
 import redis
@@ -7,6 +8,7 @@ import psycopg2
 import datetime
 import subprocess
 
+translator = Translator()
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
@@ -227,7 +229,7 @@ def handle_TextMessage(event):
     if event.message.text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
-             original_content_url='https://youtu.be/M4olt47pr_o', 
+             original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o&feature=youtu.be', 
              preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3')
              )
         except:
@@ -277,11 +279,11 @@ def handle_TextMessage(event):
 # Text Message (count)
     else:
         X = redis1.incr(event.message.text)
+        Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} for {X} time')
+            TextSendMessage(text=f'You said {event.message.text} {Y} for {X} time')
         )            
-
 
 # Handler function for Text Message (Kenny's version)
 #     if 'Mask' in event.message.text:
