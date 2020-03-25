@@ -184,7 +184,7 @@ def handle_TextMessage(event):
             ),
             CarouselColumn(
                  thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
-                 title='Mask location',
+                 title='Mask location And Wear Procedure',
                  text='Please select',
                  actions=[
                     URIAction(
@@ -219,6 +219,17 @@ def handle_TextMessage(event):
             latitude=22.308132, 
             longitude=114.237416)
         )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+    if event.message.text == "Mask Video":
+        try:    
+         line_bot_api.reply_message(event.reply_token,VideoSendMessage(
+             original_content_url='https://youtu.be/M4olt47pr_o', 
+             preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3')
+             )
         except:
          line_bot_api.reply_message(
            event.reply_token,
