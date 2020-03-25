@@ -109,7 +109,9 @@ hk6=hk.iloc[-1]['Number of cases still hospitalised for investigation']
 hk7=hk.iloc[-1]['Number of ruled out cases']
 hk8=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
 hk9=hk.iloc[-1]['As of time']
-                         
+
+
+                              
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
@@ -125,6 +127,8 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+
+
 # Buttons Template (Case in HK)
     if event.message.text == "Case":
         try: 
@@ -180,39 +184,20 @@ def handle_TextMessage(event):
             ),
             CarouselColumn(
                  thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
-                 title='Mask location',
+                 title='Mask location And When to wear mask',
                  text='Please select',
                  actions=[
-                    URIAction(
-                        label='Watson Mask',
-                        uri='https://play.google.com/store/apps/details?id=com.ndn.android.watsons&hl=en_US'
-                    ),
                     URIAction(
                         label='HKTVmall Online',
                         uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     ),
                     MessageAction(
-                        label='Physical Store',
-                        text='Mask Location'
-                    )
-                ]
-            ),
-            CarouselColumn(
-                 thumbnail_image_url='https://logos-download.com/wp-content/uploads/2016/12/World_Health_Organization_logo_WHO.png',
-                 title='World Health Orgainization Advice',
-                 text='Please select',
-                 actions=[
-                    MessageAction(
-                        label='When to use a mask',
+                        label='How to wear medical masks',
                         text='Mask Video'
                     ),
                     MessageAction(
-                        label='How to wear medical masks',
-                        text='Mask2 Video'
-                    ),
-                    MessageAction(
-                        label='How to wear medical masks',
-                        text='Mask2 Video'
+                        label='Physical Store',
+                        text='Mask Location'
                     )
                 ]
             )
