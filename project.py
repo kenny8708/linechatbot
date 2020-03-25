@@ -109,9 +109,7 @@ hk6=hk.iloc[-1]['Number of cases still hospitalised for investigation']
 hk7=hk.iloc[-1]['Number of ruled out cases']
 hk8=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
 hk9=hk.iloc[-1]['As of time']
-
-
-                              
+                         
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
@@ -127,8 +125,6 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-
-
 # Buttons Template (Case in HK)
     if event.message.text == "Case":
         try: 
@@ -198,6 +194,21 @@ def handle_TextMessage(event):
                     MessageAction(
                         label='Physical Store',
                         text='Mask Location'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                 thumbnail_image_url='https://logos-download.com/wp-content/uploads/2016/12/World_Health_Organization_logo_WHO.png',
+                 title='World Health Orgainization Advice',
+                 text='Please select',
+                 actions=[
+                    MessageAction(
+                        label='When to use a mask',
+                        text='Mask Video'
+                    ),
+                    MessageAction(
+                        label='How to wear medical masks',
+                        text='Mask2 Video'
                     )
                 ]
             )
