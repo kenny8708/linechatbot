@@ -117,7 +117,7 @@ hk9=hk.iloc[-1]['As of time']
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
-    if translator.translate(event.message.text) == "HK Stat": 
+    if translator.translate(event.message.text).text == "HK Stat": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
@@ -131,7 +131,7 @@ def handle_TextMessage(event):
          )
 
 # Buttons Template (Case in HK)
-    if translator.translate(event.message.text) == "Case":
+    if translator.translate(event.message.text).text == "Case":
         try: 
          buttons_template = TemplateSendMessage(
          alt_text='COVID-19 Cases in Hong Kong',
@@ -158,7 +158,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 # Carousel Template (Mask Supply)
-    if translator.translate(event.message.text) == "Masks": 
+    if translator.translate(event.message.text).text == "Masks": 
         try:
          carousel = TemplateSendMessage(
          alt_text='Mask Information',
@@ -212,7 +212,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #Location function
-    if translator.translate(event.message.text) == "Mask Location":
+    if translator.translate(event.message.text).text == "Mask Location":
         try:    
          line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
@@ -225,7 +225,7 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    if translator.translate(event.message.text) == "Mask Video":
+    if translator.translate(event.message.text).text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
              original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o&feature=youtu.be', 
@@ -237,7 +237,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #if Clinic
-    if translator.translate(event.message.text) == "clinic": 
+    if translator.translate(event.message.text).text == "clinic": 
         try:
             clinicimage = TemplateSendMessage(
             alt_text='COVID-19 Clinic Information in Hong Kong',
