@@ -277,7 +277,7 @@ def handle_TextMessage(event):
 
 # Text Message (count)
     else:
-        X = redis1.incr(translator.translate(event.message.text))
+        X = redis1.incr((event.message.text))
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
