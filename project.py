@@ -236,6 +236,19 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+    if 'Record' in translator.translate(event.message.text).text:
+        try:
+         record_list = prepare_record(event.message.text)
+         reply = line_insert_record(record_list)
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply)
+         )
+        except:
+         line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
 #if Clinic
     if translator.translate(event.message.text).text == "clinic": 
         try:
@@ -256,18 +269,17 @@ def handle_TextMessage(event):
 			            label='GOPC',
 		        	    uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
                     )
+                ),
+                ImageCarouselColumn(
+                    image_url='https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
+                    action=URIAction(
+			            label='Working hour',
+                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                    )
                 )
-                #,
-                #ImageCarouselColumn(
-                 #   image_url='https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
-                  #  action=URIAction(
-			       #     label='Working hour',
-                    #    uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
-                    #)
-                #)
           ]
-        )
-        )
+    )
+    )
             line_bot_api.reply_message(event.reply_token,clinicimage)
         except:
             line_bot_api.reply_message(
@@ -321,7 +333,7 @@ def handle_TextMessage(event):
 #            event.reply_token,
 #            TextSendMessage(text='Please retry it later')
 #         )
-#    elif 'Record' in event.message.text:
+#    if 'Record' in event.message.text:
 #        try:
 #         record_list = prepare_record(event.message.text)
 #         reply = line_insert_record(record_list)
