@@ -117,7 +117,7 @@ hk9=hk.iloc[-1]['As of time']
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
-    if event.message.text == "HK Stat": 
+    if translator.translate(event.message.text) == "HK Stat": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
@@ -130,9 +130,8 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-
 # Buttons Template (Case in HK)
-    if event.message.text == "Case":
+    if translator.translate(event.message.text) == "Case":
         try: 
          buttons_template = TemplateSendMessage(
          alt_text='COVID-19 Cases in Hong Kong',
@@ -159,7 +158,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 # Carousel Template (Mask Supply)
-    if event.message.text == "Mask": 
+    if translator.translate(event.message.text) == "Masks": 
         try:
          carousel = TemplateSendMessage(
          alt_text='Mask Information',
@@ -213,7 +212,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #Location function
-    if event.message.text == "Mask Location":
+    if translator.translate(event.message.text) == "Mask Location":
         try:    
          line_bot_api.reply_message(event.reply_token,LocationSendMessage(
             title='Mask location', 
@@ -226,7 +225,7 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    if event.message.text == "Mask Video":
+    if translator.translate(event.message.text) == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
              original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o&feature=youtu.be', 
@@ -238,7 +237,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #if Clinic
-    if event.message.text == "Clinic": 
+    if translator.translate(event.message.text) == "clinic": 
         try:
             clinicimage = TemplateSendMessage(
             alt_text='COVID-19 Clinic Information in Hong Kong',
@@ -278,11 +277,11 @@ def handle_TextMessage(event):
 
 # Text Message (count)
     else:
-        X = redis1.incr(event.message.text)
+        X = redis1.incr(translator.translate(event.message.text))
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} {Y.text} for {X} time')
+            TextSendMessage(text=f'You said {event.message.text} Translated to : {Y.text} for {X} time')
         )            
 
 # Handler function for Text Message (Kenny's version)
