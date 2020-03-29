@@ -249,48 +249,8 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #if Clinic
- #   if translator.translate(event.message.text).text == "clinic": 
-  #      try:
-   #         clinicimage = TemplateSendMessage(
-    #        alt_text='COVID-19 Clinic Information in Hong Kong',
-     #       template=ImageCarouselTemplate(
-      #      columns=[    
-       #         ImageCarouselColumn(
-        #             image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
-         #            action=URIAction(
-		#	            label='Home',
-         #               text='Home',
-		#	            uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
-         #           )
-          #      ),
-           #     ImageCarouselColumn(
-            #        image_url='https://gleneagles.hk/images/Health-Screening-Clinic_Echocardiography_5808a.jpg.pagespeed.ce.2clbkujzUs.jpg',
-             #       action=URIAction(
-			  #          label='GOPC',
-               #         text='GOPC',
-		        #	    uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
-                 #   )
-               # ),
-               # ImageCarouselColumn(
-                #    image_url='https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
-                 #   action=URIAction(
-			      #      label='Working hour',
-                   #     text='Working hour',
-                    #    uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
-                   # )
-                #)
-         # ]
-    #)
-    #)
-     #       line_bot_api.reply_message(event.reply_token,clinicimage)
-      #  except:
-      #      line_bot_api.reply_message(
-       #    		event.reply_token,
-        #    		TextSendMessage(text='Please retry it later')
-         #    )	
-
-# Text Message (count)
-    elif translator.translate(event.message.text).text == "clinic": 
+    if translator.translate(event.message.text).text == "clinic": 
+        try:
             clinicimage = TemplateSendMessage(
             alt_text='COVID-19 Clinic Information in Hong Kong',
             template=ImageCarouselTemplate(
@@ -318,90 +278,33 @@ def handle_TextMessage(event):
                         text='Working hour',
                         uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
                     )
-                  )
-                    ]
-                    )
                 )
+          ]
+    )
+    )
             line_bot_api.reply_message(event.reply_token,clinicimage)
-          #  repsonse = line_select_overall(event.message.text)
-           # line_bot_api.reply_message(
-          #  event.reply_token,
-          #  TextSendMessage(text=f'{repsonse}')
-        #)
-    else:          
-            X = redis1.incr((event.message.text))
-            Y = translator.translate(event.message.text)
+        except:
             line_bot_api.reply_message(
+           		event.reply_token,
+            		TextSendMessage(text='Please retry it later')
+             )	
+
+# Text Message (count)
+    elif translator.translate(event.message.text).text == "admin": 
+            repsonse = line_select_overall(event.message.text)
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'{repsonse}')
+        )
+    else:          
+        X = redis1.incr((event.message.text))
+        Y = translator.translate(event.message.text)
+        line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.')
         )            
 
 
-# Handler function for Text Message (Kenny's version)
-#     if 'Mask' in event.message.text:
-#       try:
-#         repsonse = line_select_overall(event.message.text)
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=repsonse)
-#         )
-#        except:
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
-#    elif 'Clinic' in event.message.text:
-#        try:
-#         repsonse = line_select_overall(event.message.text)
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=repsonse)
-#         )
-#        except:
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
-#    elif 'Case' in event.message.text:
-#        try:
-#         repsonse = line_select_overall(event.message.text)
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=repsonse)
-#         )
-#        except:
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
-#    if 'Record' in event.message.text:
-#        try:
-#         record_list = prepare_record(event.message.text)
-#         reply = line_insert_record(record_list)
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=reply)
-#         )
-#        except:
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
-#    else:
-#         X = redis1.incr(event.message.text)
-#         line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=f'You said {event.message.text} for {X} time')
-#        )
-
-
-
-        # msg = 'I don\'t understand "' + event.message.text + '"'
-        # line_bot_api.reply_message(
-        #    event.reply_token,
-        #    TextSendMessage(text=msg)
-        #)
-      
 def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
