@@ -7,6 +7,7 @@ import redis
 import psycopg2
 import datetime
 import subprocess
+import requests
 
 translator = Translator()
 from argparse import ArgumentParser
@@ -41,6 +42,11 @@ PORT = "16496"
 
 redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
 redis1.flushdb()
+
+message = 'Hi. Select the icon form Menu bar to get more information'
+token = '9eb2obg5S1mZe8xoMbJ9BPtf9d9STI34ULysehoL3Hn'
+lineNotifyMessage(token, message)
+
 
 if channel_secret is None:
     print('Specify LINE_CHANNEL_SECRET as environment variable.')
@@ -443,6 +449,16 @@ def line_insert_record(record_list):
     conn.close()
     
     return message
+
+def lineNotifyMessage(token, msg):
+      headers = {
+          "Authorization": "Bearer " + token, 
+          "Content-Type" : "application/x-www-form-urlencoded"
+      }
+	
+      payload = {'message': msg}
+      r = requests.post("https://notify-api.line.me/api/notify", headers = headers, params = payload)
+      return r.status_code
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
