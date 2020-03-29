@@ -249,8 +249,48 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 #if Clinic
-    if translator.translate(event.message.text).text == "clinic": 
-        try:
+ #   if translator.translate(event.message.text).text == "clinic": 
+  #      try:
+   #         clinicimage = TemplateSendMessage(
+    #        alt_text='COVID-19 Clinic Information in Hong Kong',
+     #       template=ImageCarouselTemplate(
+      #      columns=[    
+       #         ImageCarouselColumn(
+        #             image_url='http://www32.ha.org.hk/capitalworksprojects/Images/source/REVUDKXha7363585.jpg',
+         #            action=URIAction(
+		#	            label='Home',
+         #               text='Home',
+		#	            uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+         #           )
+          #      ),
+           #     ImageCarouselColumn(
+            #        image_url='https://gleneagles.hk/images/Health-Screening-Clinic_Echocardiography_5808a.jpg.pagespeed.ce.2clbkujzUs.jpg',
+             #       action=URIAction(
+			  #          label='GOPC',
+               #         text='GOPC',
+		        #	    uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=10052&Lang=ENG&Dimension=100&Parent_ID=10042&Ver=HTML'
+                 #   )
+               # ),
+               # ImageCarouselColumn(
+                #    image_url='https://theundercoverrecruiter.com/wp-content/uploads/2019/09/shoaib-sr-FCsA8Adcgr4-unsplashedit-e1569673069137.jpg',
+                 #   action=URIAction(
+			      #      label='Working hour',
+                   #     text='Working hour',
+                    #    uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                   # )
+                #)
+         # ]
+    #)
+    #)
+     #       line_bot_api.reply_message(event.reply_token,clinicimage)
+      #  except:
+      #      line_bot_api.reply_message(
+       #    		event.reply_token,
+        #    		TextSendMessage(text='Please retry it later')
+         #    )	
+
+# Text Message (count)
+    elif translator.translate(event.message.text).text == "clinic": 
             clinicimage = TemplateSendMessage(
             alt_text='COVID-19 Clinic Information in Hong Kong',
             template=ImageCarouselTemplate(
@@ -278,25 +318,22 @@ def handle_TextMessage(event):
                         text='Working hour',
                         uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
                     )
+                  )
+                    ]
+                    )
                 )
-          ]
-    )
-    )
             line_bot_api.reply_message(event.reply_token,clinicimage)
-        except:
+          #  repsonse = line_select_overall(event.message.text)
+           # line_bot_api.reply_message(
+          #  event.reply_token,
+          #  TextSendMessage(text=f'{repsonse}')
+        #)
+    else:          
+            X = redis1.incr((event.message.text))
+            Y = translator.translate(event.message.text)
             line_bot_api.reply_message(
-           		event.reply_token,
-            		TextSendMessage(text='Please retry it later')
-             )	
-
-# Text Message (count)
-    else:
-        repsonse = line_select_overall(event.message.text)
-        X = redis1.incr((event.message.text))
-        Y = translator.translate(event.message.text)
-        line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time {repsonse}')
+            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.')
         )            
 
 
@@ -388,9 +425,9 @@ def prepare_record(text):
         temp_list = i.split(' ')
         
         temp_name = temp_list[0]
-        temp_training = temp_list[1]
+        temp_record = temp_list[1]
 
-        record = (temp_name, temp_training)
+        record = (temp_name, temp_record)
         record_list.append(record)
         
     return record_list     
