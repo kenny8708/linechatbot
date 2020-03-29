@@ -291,12 +291,14 @@ def handle_TextMessage(event):
 
 # Text Message (count)
     else:
+        repsonse = line_select_overall(event.message.text)
         X = redis1.incr((event.message.text))
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} Translated to : {Y.text} for {X} time')
+            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time {repsonse}')
         )            
+
 
 # Handler function for Text Message (Kenny's version)
 #     if 'Mask' in event.message.text:
