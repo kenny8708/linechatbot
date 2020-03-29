@@ -235,7 +235,7 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
-    if 'Record' in event.message.text:
+    if 'Comment' in event.message.text:
         try:
          record_list = prepare_record(event.message.text)
          reply = line_insert_record(record_list)
@@ -290,7 +290,7 @@ def handle_TextMessage(event):
              )	
 
 # Text Message (count)
-    elif translator.translate(event.message.text).text == "admin": 
+    elif translator.translate(event.message.text).text == "admincomment": 
             repsonse = line_select_overall(event.message.text)
             line_bot_api.reply_message(
             event.reply_token,
@@ -309,7 +309,7 @@ def line_select_overall(text):
     DATABASE_URL = os.environ['DATABASE_URL']
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
-    postgres_select_query = f"""SELECT * FROM Response WHERE keyword = %s;"""
+    postgres_select_query = f"""SELECT * FROM Response;"""
     cursor.execute(postgres_select_query,(text,))
     record = cursor.fetchall()
 
@@ -377,7 +377,7 @@ def line_insert_record(record_list):
     cursor.executemany(postgres_insert_query, record_list)
     conn.commit()
 
-    message = f" {cursor.rowcount} Record addes into Response "
+    message = f" Thank you for {cursor.rowcount} comment. We would reply you soon "
     print(message)
 
     cursor.close()
