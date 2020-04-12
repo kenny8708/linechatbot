@@ -243,17 +243,21 @@ def handle_TextMessage(event):
                 ]
             ),
             CarouselColumn(
-                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
-                 title='Special Service Arrangement',
+                 thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
+                 title='Mask location And Wear Procedure',
                  text='Please select',
                  actions=[
                     URIAction(
                         label='HKTVmall Online',
-                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     ),
-                    URIAction(
-                        label='HKTVmall Online',
-                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                    MessageAction(
+                        label='Physical Store',
+                        text='Mask Location'
+                    ),
+                    MessageAction(
+                        label='How to wear mask',
+                        text='Mask Video'
                     )
                 ]
             )
