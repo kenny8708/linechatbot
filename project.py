@@ -248,12 +248,16 @@ def handle_TextMessage(event):
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='HKTVmall Online',
-                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
+                        label='Hong Kong Island',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=HK'
                     ),
                     URIAction(
-                        label='HKTVmall Online',
-                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
+                        label='Kowloon',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=KLN'
+                    ),
+                    URIAction(
+                        label='New Territories',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=NT'
                     )
                 ]
             )
