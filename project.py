@@ -251,13 +251,9 @@ def handle_TextMessage(event):
                         label='HKTVmall Online',
                         uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     ),
-                    MessageAction(
-                        label='Physical Store',
-                        text='Mask Location'
-                    ),
-                    MessageAction(
-                        label='How to wear mask',
-                        text='Mask Video'
+                    URIAction(
+                        label='HKTVmall Online',
+                        uri='https://www.hktvmall.com/hktv/en/main/search?q=%3Arelevance%3Astreet%3Amain%3Acategory%3AAA11727500001'
                     )
                 ]
             )
