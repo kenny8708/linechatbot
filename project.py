@@ -252,11 +252,11 @@ def handle_TextMessage(event):
                         uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
                     ),
                     URIAction(
-                        label='Service Re-arrangement',
+                        label='Re-arrangement',
                         uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
                     ),
                     URIAction(
-                        label='Service Re-arrangement',
+                        label='Re-arrangement',
                         uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
                     )
                 ]
