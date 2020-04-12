@@ -217,7 +217,55 @@ def handle_TextMessage(event):
          )
  
 # Carousel Template (Clinic)
-
+    if translator.translate(event.message.text).text == "Clinic": 
+        try:
+         carousel = TemplateSendMessage(
+         alt_text='Clinic Information',
+         template=CarouselTemplate(
+           columns=[
+            CarouselColumn(
+                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro1.jpg',
+                 title='All General Out Patient Clinics',
+                 text='Please select',
+                 actions=[
+                    URIAction(
+                        label='Hong Kong Island',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=HK'
+                    ),
+                    URIAction(
+                        label='Kowloon',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=KLN'
+                    ),
+                    URIAction(
+                        label='New Territories',
+                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=NT'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
+                 title='Special Service Arrangement',
+                 text='Please select',
+                 actions=[
+                    URIAction(
+                        label='Re-scheduling Appointment',
+                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                    ),
+                    URIAction(
+                        label='Non-working Hours',
+                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                    )                    
+                ]
+            )                  
+        ]
+     )
+     )
+         line_bot_api.reply_message(event.reply_token,carousel)
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         ) 
          
 #Location function
     if translator.translate(event.message.text).text == "Mask Location":
