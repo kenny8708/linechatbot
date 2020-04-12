@@ -150,6 +150,7 @@ def handle_TextMessage(event):
                  URIAction(
                     label='List of Buildings with Confirmed/Probable cases',
                     uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'               
+                ),
             ]
          )
          )
