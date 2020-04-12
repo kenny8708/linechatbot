@@ -254,10 +254,6 @@ def handle_TextMessage(event):
                     URIAction(
                         label='Re-arrangement',
                         uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
-                    ),
-                    URIAction(
-                        label='Re-arrangement',
-                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
                     )
                 ]
             )
