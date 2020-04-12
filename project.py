@@ -243,17 +243,13 @@ def handle_TextMessage(event):
                 ]
             ),
             CarouselColumn(
-                 thumbnail_image_url='https://media.nationthailand.com/images/news/2020/01/27/30381117/800_a4aa7825d86de8e.jpg?v=1580100536',
+                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
                  title='Mask location And Wear Procedure',
                  text='Please select',
                  actions=[
                     URIAction(
                         label='Hong Kong Island',
                         uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=HK'
-                    ),
-                    URIAction(
-                        label='Kowloon',
-                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=KLN'
                     ),
                     URIAction(
                         label='New Territories',
