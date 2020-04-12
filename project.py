@@ -244,12 +244,16 @@ def handle_TextMessage(event):
             ),
             CarouselColumn(
                  thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
-                 title='Mask location And Wear Procedure',
+                 title='Special Service Arrangement',
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='Hong Kong Island',
-                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=HK'
+                        label='Re-scheduling Appointment',
+                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                    ),
+                    URIAction(
+                        label='Non-working Hours',
+                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
                     ),
                     URIAction(
                         label='New Territories',
