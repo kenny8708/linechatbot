@@ -148,8 +148,8 @@ def handle_TextMessage(event):
                     uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
                 ),
                 URIAction(
-                    label='Dashboard',
-                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
+                    label='List of Buildings with Confirmed/Probable Cases',
+                    uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
                 ),
             ]
          )
