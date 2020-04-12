@@ -248,16 +248,16 @@ def handle_TextMessage(event):
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='Re-scheduling Appointment',
-                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
-                    ),
-                    URIAction(
                         label='Non-office Hours',
                         uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
                     ),
                     URIAction(
-                        label='New Territories',
-                        uri='https://www.ha.org.hk/visitor/ha_isf_result.asp?lang=ENG&service_code_id=461&hospital_type=&service_type=GOPD&location=NT'
+                        label='Service Re-arrangement',
+                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                    ),
+                    URIAction(
+                        label='Service Re-arrangement',
+                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
                     )
                 ]
             )
