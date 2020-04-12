@@ -97,9 +97,9 @@ def callback():
     return 'OK'
 
 # Latest COVID-19 Statistics in HK
-url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_wuhan_eng.csv"  
+url1="http://www.chp.gov.hk/files/misc/latest_situation_of_reported_cases_covid_19_eng.csv"  
 s=requests.get(url1).content  
-hk=pd.read_csv(io.StringIO(s.decode('utf-8')), sep = ",")
+hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
 hk1=hk.iloc[-1]['As of date']
 hk2=hk.iloc[-1]['Number of confirmed cases']
