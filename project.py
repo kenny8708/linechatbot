@@ -278,10 +278,10 @@ def handle_TextMessage(event):
         try:
          carousel = TemplateSendMessage(
          alt_text='Clinic Information',
-         template=CarouselTemplate(
+         template=ImageCarouselTemplate(
            columns=[
-            CarouselColumn(
-                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro1.jpg',
+            ImageCarouselColumn(
+                 image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro1.jpg',
                  title='All General Out Patient Clinics',
                  text='Please select',
                  actions=[
@@ -299,7 +299,7 @@ def handle_TextMessage(event):
                     )
                 ]
             ),
-            CarouselColumn(
+            ImageCarouselColumn(
                  thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
                  title='Special Service Arrangement',
                  text='Please select',
