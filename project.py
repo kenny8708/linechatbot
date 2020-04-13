@@ -127,6 +127,21 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Case Details)
+    if event.message.text.split(' ')[0] == "Abcd": 
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Good Result' 
+            )
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
+
 # Buttons Template (Case in HK)
     if translator.translate(event.message.text).text == "Case":
         try: 
