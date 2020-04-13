@@ -201,21 +201,21 @@ def handle_TextMessage(event):
                 ]
             ),
             CarouselColumn(
-                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
-                 title='Special Service Arrangement',
+                 thumbnail_image_url='https://raw.githubusercontent.com/kenny8708/linechatbot/master/image/Wordwide_Flag.jpg',
+                 title='Worldwide COVID-19 Information',
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='Non-office Hours',
-                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                        label='Dashboard from HK CHP',
+                        uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
                     ),
                     URIAction(
-                        label='Re-arrangement',
-                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                        label='Dashboard from China CDC',
+                        uri='http://2019ncov.chinacdc.cn/2019-nCoV/'
                     ),
                     URIAction(
-                        label='Extreme Weather',
-                        uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=216317&Lang=ENG&Dimension=100&Parent_ID=10052&Ver=HTML'
+                        label='Dashboard from WHO',
+                        uri='https://who.sprinklr.com/'
                     )
                 ]
             )
