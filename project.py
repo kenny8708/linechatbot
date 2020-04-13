@@ -103,13 +103,11 @@ hk=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
 hk1=hk.iloc[-1]['As of date']
 hk2=hk.iloc[-1]['Number of confirmed cases']
-hk3=hk.iloc[-1]['Number of probable cases']
-hk4=hk.iloc[-1]['Number of death cases']
-hk5=hk.iloc[-1]['Number of discharge cases']
-hk6=hk.iloc[-1]['Number of cases still hospitalised for investigation']
-hk7=hk.iloc[-1]['Number of ruled out cases']
-hk8=hk.iloc[-1]['Number of cases fulfilling the reporting criteria']
-hk9=hk.iloc[-1]['As of time']
+hk3=hk.iloc[-1]['Number of death cases']
+hk4=hk.iloc[-1]['Number of discharge cases']
+hk5=hk.iloc[-1]['Number of probable cases']
+hk6=hk.iloc[-1]['Number of hospitalised cases in critical condition']
+hk7=hk.iloc[-1]['As of time']
 
 
                               
@@ -120,7 +118,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk3} \nDeath: {hk4} \nDischarged: {hk5} \nHospitalised: {hk6} \nRuled out: {hk7} \nReported: {hk8} \n--------- \nData Source: data.gov.hk \nLast Update: {hk1} {hk9} \nUpdate Frequency: Every Night' 
+            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk5} \nDeath: {hk3} \nDischarged: {hk4} \nHospitalised: {hk6} \n--------- \nData Source: data.gov.hk \nLast Update: {hk1} {hk7} \nUpdate Frequency: Every Night' 
             )
         )
         except:
