@@ -143,31 +143,86 @@ def handle_TextMessage(event):
 
 
 # Buttons Template (Case in HK)
-    if translator.translate(event.message.text).text == "Case":
-        try: 
-         buttons_template = TemplateSendMessage(
-         alt_text='COVID-19 Cases in Hong Kong',
-         template=ButtonsTemplate(
-            title='Hong Kong',
-            text='Please select',
-            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
-            actions=[
-                MessageAction(
-                    label='Latest Statistics',
-                    text='HK Stat'
-                ),
-                URIAction(
-                    label='Dashboard',
-                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
-                ),
-                URIAction(
-                    label='List of Buildings',
-                    uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
-                ),
-            ]
-         )
-         )
-         line_bot_api.reply_message(event.reply_token, buttons_template)
+#    if translator.translate(event.message.text).text == "Case":
+#        try: 
+#         buttons_template = TemplateSendMessage(
+#         alt_text='COVID-19 Cases in Hong Kong',
+#         template=ButtonsTemplate(
+#            title='Hong Kong',
+#            text='Please select',
+#            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
+#            actions=[
+#                MessageAction(
+#                    label='Latest Statistics',
+#                    text='HK Stat'
+#                ),
+#                URIAction(
+#                    label='Dashboard',
+#                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
+#                ),
+#                URIAction(
+#                    label='List of Buildings',
+#                    uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
+#                ),
+#            ]
+#         )
+#         )
+#         line_bot_api.reply_message(event.reply_token, buttons_template)
+#        except:
+#         line_bot_api.reply_message(
+#           event.reply_token,
+#            TextSendMessage(text='Please retry it later')
+#         )
+
+# Carousel Template (Case)
+    if translator.translate(event.message.text).text == "Case": 
+        try:
+         carousel = TemplateSendMessage(
+         alt_text='Case Information',
+         template=CarouselTemplate(
+           columns=[
+            CarouselColumn(
+                 thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
+                 title='Hong Kong COVID-19 Information',
+                 text='Please select',
+                 actions=[
+                    MessageAction(
+                        label='Latest Statistics',
+                        text='HK Stat'
+                    ),
+                    URIAction(
+                        label='Dashboard',
+                        uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
+                    ),
+                    URIAction(
+                        label='List of Buildings',
+                        uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
+                 title='Special Service Arrangement',
+                 text='Please select',
+                 actions=[
+                    URIAction(
+                        label='Non-office Hours',
+                        uri='https://www.ha.org.hk/haho/ho/hesd/Public_Holiday_2020_eng_txt.pdf'
+                    ),
+                    URIAction(
+                        label='Re-arrangement',
+                        uri='https://www.ha.org.hk/haho/ho/cc-Wuhan/GOPC_service_arrangement_for_appointment_change_and_medication_refill_en_text.pdf'
+                    ),
+                    URIAction(
+                        label='Extreme Weather',
+                        uri='https://www.ha.org.hk/visitor/ha_visitor_index.asp?Content_ID=216317&Lang=ENG&Dimension=100&Parent_ID=10052&Ver=HTML'
+                    )
+                ]
+            )
+        ]
+     )
+     )
+         line_bot_api.reply_message(event.reply_token,carousel)
         except:
          line_bot_api.reply_message(
            event.reply_token,
