@@ -128,7 +128,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Case Details)
-    if event.message.text.split(' ')[0] == "Abcd": 
+    if event.message.text.split(' ')[0] == "Abcd" and (len(event.message.text.split(' ')) == 2):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
