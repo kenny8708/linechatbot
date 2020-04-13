@@ -118,9 +118,11 @@ def abcd(cid):
     s3=requests.get(url3).content 
     cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
     blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))
-
+    
     cc_number=cc.loc[cc['Case no.'] == int(cid)]
     cc_number0=cc_number.iloc[0]['Case no.']
+    
+    if cid >= 0:
     print(cc_number0)
                               
 # Handler function for Text Message
