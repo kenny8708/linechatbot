@@ -206,15 +206,15 @@ def handle_TextMessage(event):
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='HK CHP Dashboard',
+                        label='HK CHP',
                         uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
                     ),
                     URIAction(
-                        label='China CDC Dashboard',
+                        label='China CDC',
                         uri='http://2019ncov.chinacdc.cn/2019-nCoV/'
                     ),
                     URIAction(
-                        label='WHO Dashboard',
+                        label='WHO',
                         uri='https://who.sprinklr.com/'
                     )
                 ]
