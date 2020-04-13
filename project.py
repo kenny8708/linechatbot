@@ -137,11 +137,12 @@ def handle_TextMessage(event):
         cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
         blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
         cc_number=cc.loc[cc['Case no.'] == int(cid)]
-        cc_number0=cc_number.iloc[0]['Case no.']        
+        cc_number0=cc_number.iloc[0]['Case no.']
+        cc_number1=cc_number.iloc[0]['Report date']        
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'{cc_number0}' 
+            TextSendMessage(text=f'{cc_number0} \n{cc_number1}' 
             )
         )
         except:
