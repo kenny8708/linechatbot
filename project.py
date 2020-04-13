@@ -384,10 +384,11 @@ def handle_TextMessage(event):
             ),
             ImageCarouselColumn(
                 image_url='https://image.freepik.com/free-vector/young-man-doubting_1133-526.jpg',
-                action=URIAction(
-                        label='HKTV Mall Q&A',
-                        uri='https://cloud.marketing.hktvmall.com/pre-sale-registration-tnc?openinapp=true&autoTriggerApp=true&backstack=true&fastrender=true&utm_source=promosite&utm_medium=mall&utm_campaign=promosite_mall_presale_mask_202004'
-                    )
+                action=PostbackTemplateAction(
+                    label='Disclaimer',
+                    text='The information provided by covid19 team (“we,” “us” or “our”) on linechatbot  is for general informational purposes only. \n All information on the Site [and our mobile application] is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the app.',
+                    data='action=buy&itemid=2'
+                )
             )
         ]
     )
