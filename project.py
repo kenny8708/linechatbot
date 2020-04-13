@@ -129,10 +129,11 @@ def handle_TextMessage(event):
 
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Abcd" and (len(event.message.text.split(' ')) == 2):
+        cid=event.message.text.split(' ')[1]    
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text='Good Result' 
+            TextSendMessage(text=f'{cid}' 
             )
         )
         except:
