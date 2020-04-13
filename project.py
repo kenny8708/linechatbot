@@ -110,20 +110,6 @@ hk6=hk.iloc[-1]['Number of hospitalised cases in critical condition']
 hk7=hk.iloc[-1]['As of time']
 hk8=hk2+hk5-hk3-hk4
 
-# Case Detail
-def abcd(cid):
-    url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
-    url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
-    s2=requests.get(url2).content
-    s3=requests.get(url3).content 
-    cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
-    blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))
-    
-    cc_number=cc.loc[cc['Case no.'] == int(cid)]
-    cc_number0=cc_number.iloc[0]['Case no.']
-    
-    if cid >= 0:
-        print(cc_number0)
                               
 # Handler function for Text Message
 def handle_TextMessage(event):
@@ -144,11 +130,18 @@ def handle_TextMessage(event):
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Abcd" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
-        content=abcd(cid)        
+        url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
+        url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
+        s2=requests.get(url2).content
+        s3=requests.get(url3).content 
+        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
+        blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
+        cc_number=cc.loc[cc['Case no.'] == int(cid)]
+        cc_number0=cc_number.iloc[0]['Case no.']        
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(content 
+            TextSendMessage(text=f'{cc_number0}' 
             )
         )
         except:
