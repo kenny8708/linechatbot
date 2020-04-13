@@ -379,7 +379,7 @@ def handle_TextMessage(event):
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.')
+            TextSendMessage(text=f'You said {event.message.text} for {X} time.\nYou can press the "Help" button for the User Guide of this chatbot.\nLet's fight the virus together!')
         )            
 
 
