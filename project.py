@@ -128,7 +128,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Case Details)
-    if event.message.text.split(' ')[0] == "Abcd" and (len(event.message.text.split(' ')) == 2):
+    if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
         url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
         url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
@@ -153,7 +153,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Case {cc_number0} \n{cc_number1} \n{cc_number6} \n{cc_number7} \n{cc_number3} \n{cc_number4} \n{cc_number8} \n{cc_number1} \n{cc_number9} \n{cc_number2} \n{cc_number5} \n{blist_name2} \n{blist_name1}'
+            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5} \n{blist_name2} \n{blist_name1}'
             )
         )
         except:
