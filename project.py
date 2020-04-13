@@ -153,7 +153,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5}'
+            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5} \n\nBuildings in which cases have resided:\n{blist_name2} \n{blist_name1}'
             )
         )
         except:
@@ -183,9 +183,9 @@ def handle_TextMessage(event):
                         label='List of Buildings',
                         uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
                     ),
-                    MessageAction(
-                        label='Detail of Cases',
-                        text='To know the details of probable/confirmed cases, please input "Case xxx".'
+                    URIAction(
+                        label='Quarantine Centres',
+                        uri='https://www.chp.gov.hk/files/pdf/quarantine_centre_en.pdf'
                     )
                 ]
             ),
