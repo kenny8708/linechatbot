@@ -202,19 +202,19 @@ def handle_TextMessage(event):
             ),
             CarouselColumn(
                  thumbnail_image_url='https://raw.githubusercontent.com/kenny8708/linechatbot/master/image/Wordwide_Flag.jpg',
-                 title='Worldwide COVID-19 Information',
+                 title='Worldwide COVID-19 Dashboard',
                  text='Please select',
                  actions=[
                     URIAction(
-                        label='Dashboard from HK CHP',
+                        label='HK CHP Dashboard',
                         uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
                     ),
                     URIAction(
-                        label='Dashboard from China CDC',
+                        label='China CDC Dashboard',
                         uri='http://2019ncov.chinacdc.cn/2019-nCoV/'
                     ),
                     URIAction(
-                        label='Dashboard from WHO',
+                        label='WHO Dashboard',
                         uri='https://who.sprinklr.com/'
                     )
                 ]
