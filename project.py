@@ -368,37 +368,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-    if translator.translate(event.message.text).text == "About Us":
-        try:    
-         Image_Carousel = TemplateSendMessage(
-            alt_text='目錄 template',
-            template=ImageCarouselTemplate(
-            columns=[
-            ImageCarouselColumn(
-                image_url='https://image.freepik.com/free-vector/business-background-design_1133-247.jpg',
-                action=PostbackTemplateAction(
-                    label='Comment',
-                    text='postback text1',
-                    data='action=buy&itemid=1'
-                )
-            ),
-            ImageCarouselColumn(
-                image_url='https://image.freepik.com/free-vector/young-man-doubting_1133-526.jpg',
-                action=PostbackTemplateAction(
-                    label='postback2',
-                    text='postback text2',
-                    data='action=buy&itemid=2'
-                )
-            )
-        ]
-    )
-    )     
-         line_bot_api.reply_message(event.reply_token,Image_Carousel)
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
+ 
          
 # Text Message (count)
     elif translator.translate(event.message.text).text == "admincomment": 
