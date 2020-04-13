@@ -278,10 +278,10 @@ def handle_TextMessage(event):
         try:
          carousel = TemplateSendMessage(
          alt_text='Clinic Information',
-         template=ImageCarouselTemplate(
+         template=CarouselTemplate(
            columns=[
-            ImageCarouselColumn(
-                 image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro1.jpg',
+            CarouselColumn(
+                 thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro1.jpg',
                  title='All General Out Patient Clinics',
                  text='Please select',
                  actions=[
@@ -299,7 +299,7 @@ def handle_TextMessage(event):
                     )
                 ]
             ),
-            ImageCarouselColumn(
+            CarouselColumn(
                  thumbnail_image_url='https://www.ha.org.hk/haho/ho/snp/v3/images/gopc_intro2.jpg',
                  title='Special Service Arrangement',
                  text='Please select',
@@ -342,6 +342,7 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+    
     if translator.translate(event.message.text).text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
@@ -366,6 +367,37 @@ def handle_TextMessage(event):
             event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+
+    if translator.translate(event.message.text).text == "About Us":
+        try:    
+         Image_Carousel = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ImageCarouselTemplate(
+            columns=[
+            ImageCarouselColumn(
+                image_url='https://image.freepik.com/free-vector/business-background-design_1133-247.jpg',
+                action=PostbackTemplateAction(
+                    label='Comment',
+                    text='postback text1',
+                    data='action=buy&itemid=1'
+                )
+            ),
+            ImageCarouselColumn(
+                image_url='https://image.freepik.com/free-vector/young-man-doubting_1133-526.jpg',
+                action=PostbackTemplateAction(
+                    label='Contact',
+                    text='Bot team',
+                    data='action=buy&itemid=2'
+                )
+            )
+        ]
+    )
+    )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
          
 # Text Message (count)
     elif translator.translate(event.message.text).text == "admincomment": 
@@ -379,7 +411,7 @@ def handle_TextMessage(event):
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} for {X} time.\nYou can press "Help" button for User Guide of this chatbot.')
+            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.')
         )            
 
 
