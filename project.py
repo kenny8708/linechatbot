@@ -368,27 +368,26 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-    if translator.translate(event.message.text).text == "About Us":
+    if translator.translate(event.message.text).text == "Information":
         try:    
          Image_Carousel = TemplateSendMessage(
-            alt_text='目錄 template',
+            alt_text='New Information',
             template=ImageCarouselTemplate(
             columns=[
             ImageCarouselColumn(
                 image_url='https://image.freepik.com/free-vector/business-background-design_1133-247.jpg',
                 action=PostbackTemplateAction(
-                    label='Comment',
-                    text='postback text1',
+                    label='Like',
+                    text='Comment Like Bot',
                     data='action=buy&itemid=1'
                 )
             ),
             ImageCarouselColumn(
                 image_url='https://image.freepik.com/free-vector/young-man-doubting_1133-526.jpg',
-                action=PostbackTemplateAction(
-                    label='Contact',
-                    text='Bot team',
-                    data='action=buy&itemid=2'
-                )
+                action=URIAction(
+                        label='HKTV Mall Q&A',
+                        uri='https://cloud.marketing.hktvmall.com/pre-sale-registration-tnc?openinapp=true&autoTriggerApp=true&backstack=true&fastrender=true&utm_source=promosite&utm_medium=mall&utm_campaign=promosite_mall_presale_mask_202004'
+                    )
             )
         ]
     )
