@@ -378,7 +378,7 @@ def handle_TextMessage(event):
                 image_url='https://image.freepik.com/free-vector/business-background-design_1133-247.jpg',
                 action=PostbackTemplateAction(
                     label='Comment',
-                    text='postback text1',
+                    text='Comment Like Bot',
                     data='action=buy&itemid=1'
                 )
             ),
@@ -386,7 +386,7 @@ def handle_TextMessage(event):
                 image_url='https://image.freepik.com/free-vector/young-man-doubting_1133-526.jpg',
                 action=PostbackTemplateAction(
                     label='Contact',
-                    text='Bot team',
+                    text='The information provided by covid19 team (“we,” “us” or “our”) on linechatbot  is for general informational purposes only. \n All information on the Site [and our mobile application] is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness of any information on the app.',
                     data='action=buy&itemid=2'
                 )
             )
