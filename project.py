@@ -142,38 +142,6 @@ def handle_TextMessage(event):
          )
 
 
-# Buttons Template (Case in HK)
-#    if translator.translate(event.message.text).text == "Case":
-#        try: 
-#         buttons_template = TemplateSendMessage(
-#         alt_text='COVID-19 Cases in Hong Kong',
-#         template=ButtonsTemplate(
-#            title='Hong Kong',
-#            text='Please select',
-#            thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Flag_of_Hong_Kong.svg/2560px-Flag_of_Hong_Kong.svg.png',
-#            actions=[
-#                MessageAction(
-#                    label='Latest Statistics',
-#                    text='HK Stat'
-#                ),
-#                URIAction(
-#                    label='Dashboard',
-#                    uri='https://chp-dashboard.geodata.gov.hk/covid-19/en.html'
-#                ),
-#                URIAction(
-#                    label='List of Buildings',
-#                    uri='https://www.chp.gov.hk/files/pdf/building_list_eng.pdf'
-#                ),
-#            ]
-#         )
-#         )
-#         line_bot_api.reply_message(event.reply_token, buttons_template)
-#        except:
-#         line_bot_api.reply_message(
-#           event.reply_token,
-#            TextSendMessage(text='Please retry it later')
-#         )
-
 # Carousel Template (Case)
     if translator.translate(event.message.text).text == "Case": 
         try:
