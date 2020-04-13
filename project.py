@@ -368,7 +368,7 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-    if translator.translate(event.message.text).text == "About":
+    if translator.translate(event.message.text).text == "About Us":
         try:    
          Image_Carousel = TemplateSendMessage(
             alt_text='目錄 template',
