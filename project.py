@@ -118,7 +118,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \nConfirmed: {hk2} \nProbable: {hk5} \nDeath: {hk3} \nDischarged: {hk4} \nHospitalised: {hk8} \n--------- \nData Source: data.gov.hk \nLast Update: {hk1} {hk7} \nUpdate Frequency: Every Night' 
+            TextSendMessage(text=f'Latest COVID-19 Statistics in HK \n\nConfirmed: {hk2} \nProbable: {hk5} \nDeath: {hk3} \nDischarged: {hk4} \nHospitalised: {hk8} \n--------- \nData Source: data.gov.hk \nLast Update: {hk1} {hk7} \nUpdate Frequency: Every Night' 
             )
         )
         except:
