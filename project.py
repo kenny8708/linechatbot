@@ -153,7 +153,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'{cc_number0} \n{cc_number1} \n{cc_number6} \n{cc_number7} \n{cc_number3} \n{cc_number4} \n{cc_number8} \n{cc_number1} \n{cc_number9} \n{cc_number2} \n{cc_number5} \n{blist_name2} \n{blist_name1}'
+            TextSendMessage(text=f'Case {cc_number0} \n{cc_number1} \n{cc_number6} \n{cc_number7} \n{cc_number3} \n{cc_number4} \n{cc_number8} \n{cc_number1} \n{cc_number9} \n{cc_number2} \n{cc_number5} \n{blist_name2} \n{blist_name1}'
             )
         )
         except:
