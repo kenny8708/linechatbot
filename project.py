@@ -106,7 +106,6 @@ hk2=hk.iloc[-1]['Number of confirmed cases']
 hk3=hk.iloc[-1]['Number of death cases']
 hk4=hk.iloc[-1]['Number of discharge cases']
 hk5=hk.iloc[-1]['Number of probable cases']
-hk6=hk.iloc[-1]['Number of hospitalised cases in critical condition']
 hk7=hk.iloc[-1]['As of time']
 hk8=hk2+hk5-hk3-hk4
 
