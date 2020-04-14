@@ -34,22 +34,22 @@ Play a video to teach the proper way of wear mask.
 
 [Clinic]
 1. All General Out-Patient Clinics
-To display the location, contact and opening hours of all General Out-Patient Clinics.
+Display the location, contact and opening hours of all General Out-Patient Clinics.
 
 2. Special Service Arrangement
 	
 a. Non-office Hours
-To show the opening hours of evening, sundays & public holidays' General Out-Patient Clinics in 2020.
+Show the opening hours of evening, sundays & public holidays' General Out-Patient Clinics in 2020.
 	
 b. Re-arrangement
-To show the service arrangement under the situation of Severe Respiratory Disease associated with a Novel Infectious Agent.
+Show the service arrangement under the situation of Severe Respiratory Disease associated with a Novel Infectious Agent.
 	
 c. Extreme Weather
-To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
+Show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
 
 [Other Functions]
 1. Google Translate
-To translate the input messages to english.
+Translate the input messages to english.
 For example: 個案 = Case, 口罩 = Masks
 	
 2. Text Count
