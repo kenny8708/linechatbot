@@ -127,6 +127,21 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Help)
+    if event.message.text == "Help": 
+        f = open("help.txt", "r")
+        file_contents = f.read()
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(file_contents)
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
