@@ -147,8 +147,8 @@ def handle_TextMessage(event):
         url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
         s2=requests.get(url2).content
         s3=requests.get(url3).content 
-        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
-        blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
+        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')), sep=',')
+        blist=pd.read_csv(io.StringIO(s3.decode('utf-8')), sep=',')     
         cc_number=cc.loc[cc['Case no.'] == cid]
         cc_number0=cc_number.iloc[0]['Case no.']
         cc_number1=cc_number.iloc[0]['Report date']
