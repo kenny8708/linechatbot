@@ -140,19 +140,6 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-#  Text Message (Mask Selection)
-    if event.message.text == "3M Mask" or "Medicom Mask" or "超立體口罩": 
-        try:   
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please choose the type of masks you want to find.')
-        )
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
@@ -297,6 +284,20 @@ def handle_TextMessage(event):
            event.reply_token,
             TextSendMessage(text='Please retry it later')
          )
+
+#  Text Message (Mask Selection)
+    if event.message.text == "3M Mask" or "Medicom Mask" or "超立體口罩": 
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please choose the type of masks you want to find.')
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
 
 # Carousel Template (Clinic)
     if translator.translate(event.message.text).text == "Clinic": 
