@@ -2,7 +2,6 @@ You may start from clicking Main Menu below:
 
 [Case]
 1. Hong Kong COVID-19 Information
-
 a. Latest Statistics
 Know the latest COVID-19 Statistics in Hong Kong which update everyday.
 		
@@ -13,7 +12,6 @@ c. Quarantine Centres
 Show all Quarantine Centres set up by HK Government in Hong Kong.
 	
 2. Worldwide COVID-19 Dashboard
-
 Show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
 
 3. Additional Function
@@ -22,11 +20,9 @@ For example: Case 1001
 
 [Masks]
 1. Mask Brand
-
 Introduce different types of recommended mask brand.
 
 2. Mask Location and Wear Procedure
-
 a. HKTVmall Online
 Provide the link to buy mask online at HKTVmall.
 
@@ -38,7 +34,6 @@ Play a video to teach the proper way of wear mask.
 
 [Clinic]
 1. All General Out-Patient Clinics
-
 To display the location, contact and opening hours of all General Out-Patient Clinics.
 
 2. Special Service Arrangement
