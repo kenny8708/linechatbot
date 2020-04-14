@@ -62,3 +62,6 @@ If you entered unscripted messages, the chatbot will count number of times for t
 
 3. Handling of non-text messages
 You can try to send Sticker Message, Image Message, Video Message or File Message to see what happens.
+
+4. Comment
+Feel free to input any comment by typing "Comment" and message in next line.
