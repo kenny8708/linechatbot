@@ -127,11 +127,12 @@ def handle_TextMessage(event):
 
 #  Text Message (User Guide)
     if translator.translate(event.message.text).text == "User Guide": 
+        h = open("help.txt", "r")
+        help_contents = h.read()
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Testing' 
-            )
+            TextSendMessage(help_contents)
         )
         except:
          line_bot_api.reply_message(
