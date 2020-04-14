@@ -1,25 +1,25 @@
 You may start from selecting 3 main categories of Menu bar below:
 
-【Menu】
+[Menu]
 - Help
 - Case
 - Masks
 - Clinic
 
-【Help】
-To show all functions available in this chatbot.
+[Help]
+Show all functions available in this chatbot.
 
-【Case】
+[Case]
 1. Hong Kong COVID-19 Information
 
 a. Latest Statistics
-To know the latest COVID-19 Statistics in Hong Kong which update everyday.
+Know the latest COVID-19 Statistics in Hong Kong which update everyday.
 		
 b. List of Buildings
-To list all buildings with confirmed cases of COVID-19 in the past 14 days.
+List all buildings with confirmed cases of COVID-19 in the past 14 days.
 		
 c. Quarantine Centres
-To show all Quarantine Centres set up by HK Government in Hong Kong.
+Show all Quarantine Centres set up by HK Government in Hong Kong.
 	
 	
 2. Worldwide COVID-19 Dashboard
@@ -28,7 +28,7 @@ a. HK CHP
 b. China CDC	
 c. WHO
 
-To show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
+Show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
 
 
 3. Additional Function
@@ -36,10 +36,27 @@ You can type "Case XXXX" to know the detail of probable/confirmed cases.
 For example: Case 1001
 
 
-【Masks】
-TBC
+[Masks]
+1. Mask Brand
 
-【Clinic】
+a. 3M
+b. Medicom
+c. 超立體
+
+Introduce different types of recommended mask brand.
+
+2. Mask Location and Wear Procedure
+
+a. HKTVmall Online
+Provide the link to buy mask online at HKTVmall.
+
+b. Physical Store
+Show the geographic location of Physical Store to buy mask.
+
+c. How to wear mask
+Play a video to teach the proper way of wear mask.
+
+[Clinic]
 1. All General Out-Patient Clinics
 
 a. Hong Kong Island
@@ -61,10 +78,14 @@ c. Extreme Weather
 To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
 
 
-【Other Functions】
-1. Google Translation
+[Other Functions]
+1. Google Translate
 To translate the input messages to english.
 For example: 個案 = Case, 口罩 = Masks
 	
-2. 
+2. Text Count
+If you entered unscripted messages, the chatbot will count number of times for the keyword typed and tell you can read the User Guide for instruction.
+
+3. Handling of non-text messages
+You can try to send Sticker Message, Image Message, Video Message or File Message to can what happens. :]
 
