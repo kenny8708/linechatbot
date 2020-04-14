@@ -285,6 +285,19 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Select Masks)
+    if translator.translate(event.message.text).text == "3M Mask": 
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please choose which type of masks you want to find.')
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
 # Carousel Template (Clinic)
     if translator.translate(event.message.text).text == "Clinic": 
         try:
