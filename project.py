@@ -128,12 +128,12 @@ def handle_TextMessage(event):
 
 #  Text Message (Help)
     if translator.translate(event.message.text).text == "Help": 
-        f = open("help.txt", "r")
-        file_contents = f.read()
+        help = open("help.txt", "r")
+        help_contents = f.read()
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'{file_contents}')
+            TextSendMessage(help_contents)
         )
         except:
          line_bot_api.reply_message(
