@@ -20,7 +20,6 @@ Show the dashboard provided by HK Government / Chinese Center for Disease Contro
 You can type "Case XXXX" to know the detail of probable/confirmed cases.
 For example: Case 1001
 
-
 [Masks]
 1. Mask Brand
 
@@ -36,7 +35,6 @@ Show the geographic location of Physical Store to buy mask.
 
 c. How to wear mask
 Play a video to teach the proper way of wear mask.
-
 
 [Clinic]
 1. All General Out-Patient Clinics
@@ -54,7 +52,6 @@ To show the service arrangement under the situation of Severe Respiratory Diseas
 c. Extreme Weather
 To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
 
-
 [Other Functions]
 1. Google Translate
 To translate the input messages to english.
@@ -65,4 +62,3 @@ If you entered unscripted messages, the chatbot will count number of times for t
 
 3. Handling of non-text messages
 You can try to send Sticker Message, Image Message, Video Message or File Message to see what happens.
-
