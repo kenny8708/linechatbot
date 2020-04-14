@@ -109,6 +109,8 @@ hk5=hk.iloc[-1]['Number of probable cases']
 hk7=hk.iloc[-1]['As of time']
 hk8=hk2+hk5-hk3-hk4
 
+h = open("help.txt", "r")
+help_contents = h.read()
                               
 # Handler function for Text Message
 def handle_TextMessage(event):
@@ -127,9 +129,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Help)
-    if translator.translate(event.message.text).text == "Help": 
-        h = open("help.txt", "r")
-        help_contents = h.read()
+    if translator.translate(event.message.text).text == "Help":        
         try:   
          line_bot_api.reply_message(
            event.reply_token,
