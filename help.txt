@@ -1,3 +1,5 @@
+You may start from selecting 3 main categories of Menu bar below:
+
 [Menu]
 - Help
 - Case
@@ -23,7 +25,7 @@ To show all functions available in this chatbot.
 2. Worldwide COVID-19 Dashboard
 
 	a. HK CHP
-			To show the dashboard provided by HK Government.
+		To show the dashboard provided by HK Government.
 			
 	b. China CDC
 		To show the dashboard provided by Chinese Center for Disease Control and Prevention.
