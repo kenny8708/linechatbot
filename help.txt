@@ -1,15 +1,15 @@
 You may start from selecting 3 main categories of Menu bar below:
 
-[Menu]
+【Menu】
 - Help
 - Case
 - Masks
 - Clinic
 
-[Help]
+【Help】
 To show all functions available in this chatbot.
 
-[Case]
+【Case】
 1. Hong Kong COVID-19 Information
 
 a. Latest Statistics
@@ -24,35 +24,29 @@ To show all Quarantine Centres set up by HK Government in Hong Kong.
 	
 2. Worldwide COVID-19 Dashboard
 
-a. HK CHP
-To show the dashboard provided by HK Government.
-			
-b. China CDC
-To show the dashboard provided by Chinese Center for Disease Control and Prevention.
-		
+a. HK CHP	
+b. China CDC	
 c. WHO
-To show the dashboard provided by World Health Organization.
+
+To show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
 
 
 3. Additional Function
-You can type "Case XXXX" to know the latest COVID-19 Statistics in Hong Kong which update everyday.
+You can type "Case XXXX" to know the detail of probable/confirmed cases.
 For example: Case 1001
 
 
-[Masks]
+【Masks】
 TBC
 
-[Clinic]
+【Clinic】
 1. All General Out-Patient Clinics
 
 a. Hong Kong Island
-To display the location, contact and opening hours of all General Out-Patient Clinics in Hong Kong Island.
-	
 b. Kowloon
-To display the location, contact and opening hours of all General Out-Patient Clinics in Kowloon.
-	
 c. New Territories
-To display the location, contact and opening hours of all General Out-Patient Clinics in New Territories.
+
+To display the location, contact and opening hours of all General Out-Patient Clinics in Hong Kong Island / Kowloon / New Territories.
 
 
 2. Special Service Arrangement
@@ -67,10 +61,10 @@ c. Extreme Weather
 To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
 
 
-[Other Functions]
+【Other Functions】
 1. Google Translation
 To translate the input messages to english.
-For example: 個案 = Case
+For example: 個案 = Case, 口罩 = Masks
 	
 2. 
 
