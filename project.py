@@ -231,7 +231,7 @@ def handle_TextMessage(event):
          )
          
 # Carousel Template (Mask Supply)
-    if event.message.text == "Masks": 
+    if translator.translate(event.message.text).text == "Masks": 
         try:
          carousel = TemplateSendMessage(
          alt_text='Mask Information',
