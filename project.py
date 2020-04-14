@@ -108,9 +108,6 @@ hk4=hk.iloc[-1]['Number of discharge cases']
 hk5=hk.iloc[-1]['Number of probable cases']
 hk7=hk.iloc[-1]['As of time']
 hk8=hk2+hk5-hk3-hk4
-
-h = open("help.txt", "r")
-help_contents = h.read()
                               
 # Handler function for Text Message
 def handle_TextMessage(event):
@@ -133,7 +130,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(help_contents)
+            TextSendMessage(text='Help Testing')
         )
         except:
          line_bot_api.reply_message(
