@@ -112,7 +112,7 @@ hk8=hk2+hk5-hk3-hk4
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
-    if translator.translate(event.message.text).text == "HK Stat": 
+    if event.message.text == "HK Stat": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
