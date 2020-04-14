@@ -113,7 +113,7 @@ hk8=hk2+hk5-hk3-hk4
 # Handler function for Text Message
 def handle_TextMessage(event):
 #  Text Message (Latest COVID-19 Statistics in HK)
-    if event.message.text == "HK Stat": 
+    if translator.translate(event.message.text).text == "HK Stat": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
@@ -127,13 +127,13 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Help)
-    if event.message.text == "Help": 
+    if translator.translate(event.message.text).text == "Help": 
         f = open("help.txt", "r")
         file_contents = f.read()
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(file_contents)
+            TextSendMessage(text=f'{file_contents}')
         )
         except:
          line_bot_api.reply_message(
