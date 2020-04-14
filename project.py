@@ -125,19 +125,6 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-#  Text Message (Help)
-    if translator.translate(event.message.text).text == "Help":        
-        try:   
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Help Testing')
-        )
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
@@ -357,7 +344,7 @@ def handle_TextMessage(event):
     if translator.translate(event.message.text).text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
-             original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o&feature=youtu.be', 
+             original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o', 
              preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3')
              )
         except:
@@ -405,6 +392,20 @@ def handle_TextMessage(event):
     )
     )
          line_bot_api.reply_message(event.reply_token,Image_Carousel)
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
+#  Text Message (Help)
+    if translator.translate(event.message.text).text == "Help":        
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Help Testing'
+            )
+        )
         except:
          line_bot_api.reply_message(
            event.reply_token,
