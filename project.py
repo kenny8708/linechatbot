@@ -366,7 +366,7 @@ def handle_TextMessage(event):
     if translator.translate(event.message.text).text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
-             original_content_url='https://github.com/kenny8708/linechatbot/blob/master/mask_video.mp4', 
+             original_content_url='https://s17.aconvert.com/convert/p3r68-cdx67/z5rpw-h02oh.mp4', 
              preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3')
              )
         except:
