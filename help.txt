@@ -1,4 +1,10 @@
-You may start from clicking Menu Bar below:
+You may start from clicking Main Menu below:
+
+[Main Menu]
+- Help
+- Case
+- Masks
+- Clinic
 
 [Case]
 1. Hong Kong COVID-19 Information
