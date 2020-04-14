@@ -141,7 +141,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Mask Selection)
-    if event.message.text == "3M Mask": 
+    if event.message.text == "3M Mask" or "Medicom Mask" or "超立體口罩": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
