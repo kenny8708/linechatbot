@@ -144,11 +144,8 @@ def handle_TextMessage(event):
     if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
         url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
-        #url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
-        s2=requests.get(url2).content
-        #s3=requests.get(url3).content 
-        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')), sep=',')
-        #blist=pd.read_csv(io.StringIO(s3.decode('utf-8')), sep=',')     
+        s2=requests.get(url2).content 
+        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')), sep=',')     
         cc_number=cc.loc[cc['Case no.'] == int(cid)]
         cc_number0=cc_number.iloc[0][0]
         cc_number1=cc_number.iloc[0][1]
@@ -159,10 +156,7 @@ def handle_TextMessage(event):
         cc_number6=cc_number.iloc[0][6]
         cc_number7=cc_number.iloc[0][7]
         cc_number8=cc_number.iloc[0][8]
-        cc_number9=cc_number.iloc[0][9]
-        #blist_name=blist.loc[blist['Related probable/confirmed cases'] == int(cid)]
-        #blist_name1=blist_name.iloc[0][0]
-        #blist_name2=blist_name.iloc[0][1]        
+        cc_number9=cc_number.iloc[0][9]       
         try:   
          line_bot_api.reply_message(
            event.reply_token,
