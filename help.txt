@@ -1,11 +1,5 @@
 You may start from clicking Menu Bar below:
 
-[Menu]
-- Help
-- Case
-- Masks
-- Clinic
-
 [Case]
 1. Hong Kong COVID-19 Information
 
@@ -20,10 +14,6 @@ Show all Quarantine Centres set up by HK Government in Hong Kong.
 	
 2. Worldwide COVID-19 Dashboard
 
-a. HK CHP	
-b. China CDC	
-c. WHO
-
 Show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
 
 3. Additional Function
@@ -34,7 +24,6 @@ For example: Case 1001
 [Masks]
 1. Mask Brand
 
-3M / Medicom / 超立體
 Introduce different types of recommended mask brand.
 
 2. Mask Location and Wear Procedure
@@ -51,8 +40,6 @@ Play a video to teach the proper way of wear mask.
 
 [Clinic]
 1. All General Out-Patient Clinics
-
-Hong Kong Island / Kowloon / New Territories
 
 To display the location, contact and opening hours of all General Out-Patient Clinics.
 
@@ -77,5 +64,5 @@ For example: 個案 = Case, 口罩 = Masks
 If you entered unscripted messages, the chatbot will count number of times for the keyword typed and tell you can read the User Guide for instruction.
 
 3. Handling of non-text messages
-You can try to send Sticker Message, Image Message, Video Message or File Message to can what happens. :]
+You can try to send Sticker Message, Image Message, Video Message or File Message to can what happens.
 
