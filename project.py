@@ -126,7 +126,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (User Guide)
-    if translator.translate(event.message.text).text == "User Guide": 
+    if translator.translate(event.message.text).text == "Help": 
         h = open("help.txt", "r")
         help_contents = h.read()
         try:   
