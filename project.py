@@ -140,6 +140,19 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Mask Selection)
+    if translator.translate(event.message.text).text == "3M Mask": 
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please choose the type of masks you want to find.')
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
 #  Text Message (Case Details)
     if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
         cid=event.message.text.split(' ')[1]
