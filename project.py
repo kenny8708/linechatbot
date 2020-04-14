@@ -106,10 +106,8 @@ hk2=hk.iloc[-1]['Number of confirmed cases']
 hk3=hk.iloc[-1]['Number of death cases']
 hk4=hk.iloc[-1]['Number of discharge cases']
 hk5=hk.iloc[-1]['Number of probable cases']
-hk6=hk.iloc[-1]['Number of hospitalised cases in critical condition']
 hk7=hk.iloc[-1]['As of time']
 hk8=hk2+hk5-hk3-hk4
-
                               
 # Handler function for Text Message
 def handle_TextMessage(event):
@@ -127,34 +125,14 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-#  Text Message (Case Details)
-    if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
-        cid=event.message.text.split(' ')[1]
-        url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
-        url3="http://www.chp.gov.hk/files/misc/building_list_eng.csv" 
-        s2=requests.get(url2).content
-        s3=requests.get(url3).content 
-        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
-        blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
-        cc_number=cc.loc[cc['Case no.'] == int(cid)]
-        cc_number0=cc_number.iloc[0]['Case no.']
-        cc_number1=cc_number.iloc[0]['Report date']
-        cc_number2=cc_number.iloc[0]['Date of onset']
-        cc_number3=cc_number.iloc[0]['Gender']
-        cc_number4=cc_number.iloc[0]['Age']
-        cc_number5=cc_number.iloc[0]['Name of hospital admitted']
-        cc_number6=cc_number.iloc[0]['Hospitalised/Discharged/Deceased']
-        cc_number7=cc_number.iloc[0]['HK/Non-HK resident']
-        cc_number8=cc_number.iloc[0]['Case classification*']
-        cc_number9=cc_number.iloc[0]['Confirmed/probable']
-        blist_name=blist.loc[blist['Related probable/confirmed cases'] == cid]
-        blist_name1=blist_name.iloc[0]['District']
-        blist_name2=blist_name.iloc[0]['Building name']        
+#  Text Message (User Guide)
+    if translator.translate(event.message.text).text == "Help": 
+        h = open("help.txt", "r")
+        help_contents = h.read()
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5} \n\nBuildings in which cases have resided:\n{blist_name2} \n{blist_name1}'
-            )
+            TextSendMessage(help_contents)
         )
         except:
          line_bot_api.reply_message(
@@ -162,6 +140,34 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Case Details)
+    if event.message.text.split(' ')[0] == "Case" and (len(event.message.text.split(' ')) == 2):
+        cid=event.message.text.split(' ')[1]
+        url2="http://www.chp.gov.hk/files/misc/enhanced_sur_covid_19_eng.csv"  
+        s2=requests.get(url2).content 
+        cc=pd.read_csv(io.StringIO(s2.decode('utf-8')), sep=',')     
+        cc_number=cc.loc[cc['Case no.'] == int(cid)]
+        cc_number0=cc_number.iloc[0][0]
+        cc_number1=cc_number.iloc[0][1]
+        cc_number2=cc_number.iloc[0][2]
+        cc_number3=cc_number.iloc[0][3]
+        cc_number4=cc_number.iloc[0][4]
+        cc_number5=cc_number.iloc[0][5]
+        cc_number6=cc_number.iloc[0][6]
+        cc_number7=cc_number.iloc[0][7]
+        cc_number8=cc_number.iloc[0][8]
+        cc_number9=cc_number.iloc[0][9]       
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5}'
+            )
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
 
 # Carousel Template (Case)
     if translator.translate(event.message.text).text == "Case": 
@@ -273,6 +279,20 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
+#  Text Message (Mask Selection)
+    if event.message.text == "3M Mask" or event.message.text == "Medicom Mask" or event.message.text == "超立體口罩": 
+        try:   
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please choose the type of masks you want to find.')
+        )
+        except:
+         line_bot_api.reply_message(
+           event.reply_token,
+            TextSendMessage(text='Please retry it later')
+         )
+
+
 # Carousel Template (Clinic)
     if translator.translate(event.message.text).text == "Clinic": 
         try:
@@ -346,7 +366,7 @@ def handle_TextMessage(event):
     if translator.translate(event.message.text).text == "Mask Video":
         try:    
          line_bot_api.reply_message(event.reply_token,VideoSendMessage(
-             original_content_url='https://www.youtube.com/watch?v=M4olt47pr_o&feature=youtu.be', 
+             original_content_url='https://s17.aconvert.com/convert/p3r68-cdx67/z5rpw-h02oh.mp4', 
              preview_image_url='https://www.who.int/images/default-source/health-topics/coronavirus/masks/masks-1.tmb-1920v.png?sfvrsn=38becf2f_3')
              )
         except:
@@ -412,7 +432,7 @@ def handle_TextMessage(event):
         Y = translator.translate(event.message.text)
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.')
+            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.\nIf you need User Guide of this chatbot, you can press "Help" button.')
         )            
 
 
