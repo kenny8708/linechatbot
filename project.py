@@ -149,8 +149,8 @@ def handle_TextMessage(event):
         s3=requests.get(url3).content 
         cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
         blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
-        cc_number=cc.loc[cc['Case no.'] == int(cid)]
-        cc_number0=cc_number.iloc[0]['Case no.']
+        cc_number=cc.loc[cc['Case no.'] == cid]
+        #cc_number0=cc_number.iloc[0]['Case no.']
         cc_number1=cc_number.iloc[0]['Report date']
         cc_number2=cc_number.iloc[0]['Date of onset']
         cc_number3=cc_number.iloc[0]['Gender']
@@ -166,7 +166,7 @@ def handle_TextMessage(event):
         try:   
          line_bot_api.reply_message(
            event.reply_token,
-            TextSendMessage(text=f'Case {cc_number0} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5} \n\nBuildings in which cases have resided:\n{blist_name2} \n{blist_name1}'
+            TextSendMessage(text=f'Case {cid} {cc_number6} \n\n{cc_number7} \nGender: {cc_number3} \nAge: {cc_number4} \n{cc_number8} \n{cc_number1} {cc_number9} \n{cc_number2} Onset \n\nHospital admitted:\n{cc_number5} \n\nBuildings in which cases have resided:\n{blist_name2} \n{blist_name1}'
             )
         )
         except:
