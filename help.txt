@@ -1,11 +1,5 @@
 You may start from clicking Main Menu below:
 
-[Main Menu]
-- Help
-- Case
-- Masks
-- Clinic
-
 [Case]
 1. Hong Kong COVID-19 Information
 
@@ -70,5 +64,5 @@ For example: 個案 = Case, 口罩 = Masks
 If you entered unscripted messages, the chatbot will count number of times for the keyword typed and tell you can read the User Guide for instruction.
 
 3. Handling of non-text messages
-You can try to send Sticker Message, Image Message, Video Message or File Message to can what happens.
+You can try to send Sticker Message, Image Message, Video Message or File Message to see what happens.
 
