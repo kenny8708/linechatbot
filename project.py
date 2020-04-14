@@ -149,7 +149,7 @@ def handle_TextMessage(event):
         s3=requests.get(url3).content 
         cc=pd.read_csv(io.StringIO(s2.decode('utf-8')))
         blist=pd.read_csv(io.StringIO(s3.decode('utf-8')))     
-        cc_number=cc.loc[cc['Case no.'] == cid]
+        cc_number=cc.loc[cc['Case no.'] == int(cid)]
         cc_number0=cc_number.iloc[0]['Case no.']
         cc_number1=cc_number.iloc[0]['Report date']
         cc_number2=cc_number.iloc[0]['Date of onset']
@@ -287,7 +287,7 @@ def handle_TextMessage(event):
 
 #  Text Message (Select Masks)
     if translator.translate(event.message.text).text == "3M Mask": 
-        try:
+        try:   
          line_bot_api.reply_message(
            event.reply_token,
             TextSendMessage(text='Please choose which type of masks you want to find.')
