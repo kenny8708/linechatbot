@@ -160,20 +160,6 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-#  Text Message (User Guide)
-    if event.message.text == "User Guide":        
-        try:   
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Help Testing'
-            )
-        )
-        except:
-         line_bot_api.reply_message(
-           event.reply_token,
-            TextSendMessage(text='Please retry it later')
-         )
-
 # Carousel Template (Case)
     if translator.translate(event.message.text).text == "Case": 
         try:
