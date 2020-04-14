@@ -12,31 +12,31 @@ To show all functions available in this chatbot.
 [Case]
 1. Hong Kong COVID-19 Information
 
-	a. Latest Statistics
-		To know the latest COVID-19 Statistics in Hong Kong which update everyday.
+a. Latest Statistics
+To know the latest COVID-19 Statistics in Hong Kong which update everyday.
 		
-	b. List of Buildings
-		To list all buildings with confirmed cases of COVID-19 in the past 14 days.
+b. List of Buildings
+To list all buildings with confirmed cases of COVID-19 in the past 14 days.
 		
-	c. Quarantine Centres
-		To show all Quarantine Centres set up by HK Government in Hong Kong.
+c. Quarantine Centres
+To show all Quarantine Centres set up by HK Government in Hong Kong.
 	
 	
 2. Worldwide COVID-19 Dashboard
 
-	a. HK CHP
-		To show the dashboard provided by HK Government.
+a. HK CHP
+To show the dashboard provided by HK Government.
 			
-	b. China CDC
-		To show the dashboard provided by Chinese Center for Disease Control and Prevention.
+b. China CDC
+To show the dashboard provided by Chinese Center for Disease Control and Prevention.
 		
-	c. WHO
-		To show the dashboard provided by World Health Organization.
+c. WHO
+To show the dashboard provided by World Health Organization.
 
 
 3. Additional Function
-	You can type "Case XXXX" to know the latest COVID-19 Statistics in Hong Kong which update everyday.
-	For example: Case 1001
+You can type "Case XXXX" to know the latest COVID-19 Statistics in Hong Kong which update everyday.
+For example: Case 1001
 
 
 [Masks]
@@ -45,32 +45,32 @@ TBC
 [Clinic]
 1. All General Out-Patient Clinics
 
-	a. Hong Kong Island
-		To display the location, contact and opening hours of all General Out-Patient Clinics in Hong Kong Island.
+a. Hong Kong Island
+To display the location, contact and opening hours of all General Out-Patient Clinics in Hong Kong Island.
 	
-	b. Kowloon
-		To display the location, contact and opening hours of all General Out-Patient Clinics in Kowloon.
+b. Kowloon
+To display the location, contact and opening hours of all General Out-Patient Clinics in Kowloon.
 	
-	c. New Territories
-		To display the location, contact and opening hours of all General Out-Patient Clinics in New Territories.
+c. New Territories
+To display the location, contact and opening hours of all General Out-Patient Clinics in New Territories.
 
 
 2. Special Service Arrangement
 	
-	a. Non-office Hours
-		To show the opening hours of evening, sundays & public holidays' General Out-Patient Clinics in 2020.
+a. Non-office Hours
+To show the opening hours of evening, sundays & public holidays' General Out-Patient Clinics in 2020.
 	
-	b. Re-arrangement
-		To show the service arrangement under the situation of Severe Respiratory Disease associated with a Novel Infectious Agent.
+b. Re-arrangement
+To show the service arrangement under the situation of Severe Respiratory Disease associated with a Novel Infectious Agent.
 	
-	c. Extreme Weather
-		To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
+c. Extreme Weather
+To show the special arrangement of General Out-Patient Clinics for Tropical Cyclone Warning / "Extreme Condition" and Rainstorm Warning.
 
 
 [Other Functions]
 1. Google Translation
-	To translate the input messages to english.
-	For example: 個案 = Case
+To translate the input messages to english.
+For example: 個案 = Case
 	
 2. 
 
