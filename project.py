@@ -426,19 +426,19 @@ def handle_TextMessage(event):
          )
          
 # Text Message (count)
-#    elif translator.translate(event.message.text).text == "admincomment": 
-#            repsonse = line_select_overall(event.message.text)
-#            line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=f'{repsonse}')
-#        )
-#    else:          
-#        X = redis1.incr((event.message.text))
-#        Y = translator.translate(event.message.text)
-#        line_bot_api.reply_message(
-#            event.reply_token,
-#            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.\nIf you need User Guide of this chatbot, you can press "Help" button.')
-#        )            
+    elif translator.translate(event.message.text).text == "admincomment": 
+            repsonse = line_select_overall(event.message.text)
+            line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'{repsonse}')
+        )
+    else:          
+        X = redis1.incr((event.message.text))
+        Y = translator.translate(event.message.text)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=f'You said {event.message.text} Translation: {Y.text} for {X} time.\nIf you need User Guide of this chatbot, you can press "Help" button.')
+        )            
 
 
 def line_select_overall(text):
