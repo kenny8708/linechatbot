@@ -141,7 +141,7 @@ def handle_TextMessage(event):
          )
 
 #  Text Message (Mask Selection)
-    if translator.translate(event.message.text).text == "3M Mask": 
+    if event.message.text == "3M Mask": 
         try:   
          line_bot_api.reply_message(
            event.reply_token,
