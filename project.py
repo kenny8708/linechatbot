@@ -398,8 +398,8 @@ def handle_TextMessage(event):
             TextSendMessage(text='Please retry it later')
          )
 
-#  Text Message (Help)
-    if translator.translate(event.message.text).text == "Help":        
+#  Text Message (User Guide)
+    if translator.translate(event.message.text).text == "User Guide":        
         try:   
          line_bot_api.reply_message(
            event.reply_token,
