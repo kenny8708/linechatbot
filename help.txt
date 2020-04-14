@@ -9,10 +9,10 @@ b. List of Buildings
 List all buildings with confirmed cases of COVID-19 in the past 14 days.
 		
 c. Quarantine Centres
-Show all Quarantine Centres set up by HK Government in Hong Kong.
+Show all Quarantine Centres set up in Hong Kong.
 	
 2. Worldwide COVID-19 Dashboard
-Show the dashboard provided by HK Government / Chinese Center for Disease Control and Prevention / World Health Organization.
+Show the dashboard provided by HK CHP / Chinese CDC / WHO.
 
 3. Additional Function
 You can type "Case XXXX" to know the detail of probable/confirmed cases.
